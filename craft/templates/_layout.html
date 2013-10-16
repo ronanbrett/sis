@@ -9,65 +9,105 @@
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-<head>
-	<meta charset="utf-8" />
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-	<link rel="home" href="{{ siteUrl }}" />
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Design Lab</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="{{ siteUrl }}styles/5e3a20db.main.css">
+        <script src="{{ siteUrl }}scripts/vendor/f7f27360.modernizr.js"></script>
+        <script type="text/javascript" src="http://use.typekit.net/yxa7iwy.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-	<style type="text/css">
-		body { margin: 50px; font-family: sans-serif; background: #fff; }
-		#container { margin: 0 auto; width: 700px;
-			-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-		}
 
-		#header, #footer { display: block; color: #fff; background: #da5a47; }
-		#header a, #footer a { color: #fff; }
-		#header { border-radius: 7px 7px 0 0; padding: 25px; }
-		#header:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
-		#header a { text-decoration: none; }
-		#header h1 { float: left; margin: 0; font-weight: normal; font-size: 30px; line-height: 1; }
-		#header nav { display: block; float: right; }
-		#header nav ul { margin: 0; list-style-type: none; }
-		#header nav ul li { float: left; margin-left: 20px; }
-		#header nav ul li a { display: block; margin-top: 4px; line-height: 22px; }
-		#header nav ul li a:hover,
-		#header nav ul li a.active { border-bottom: 2px solid #fff; }
-		#header nav ul li a.active { cursor: default; }
+        <header>
+            <h1 class="giga float--left">DesignLab</h1>
+            <ul class="nav">
+                    <li><a href="course/index.html">IDEA</a></li>
+                    <li><a href="#">Design Computing</a></li>
+                    <li><a href="#">Research</a></li>
+                
+            </ul>
+            <button href="#" id="openMenu" data-effect="st-effect-3" class="float--right">Menu</button>
+        </header>
 
-		#content { display: block; padding: 25px; background: #fff; }
-		#content h1 { margin-top: 0; font-size: 35px; font-weight: bold; }
-		#content a { color: #da5a47; text-decoration: none; }
-		#content a:hover { text-decoration: underline; }
+        <div class="content">
 
-		#footer { border-radius: 0 0 7px 7px; padding: 15px; font-size: 12px; text-align: center; }
-	</style>
-</head>
+        
+		{% block content%}
+        
+        {% endblock %}
 
-<body>
-	<div id="container">
-		<header id="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+       
+        </div>
+        <nav class="st-menu" id="menu-3">
+            <div class="selector float--left">
+                <div id="" class="sideLogo sideLogo--desLab active"></div>
+                <div id="" class="sideLogo sideLogo--idea"></div>
+                <div id="" class="sideLogo sideLogo--desComp"></div>
+                <div id="" class="sideLogo sideLogo--ixd"></div>
+            </div>
+            <section class="desLab float--right">
+                <h3>Design Lab</h3>
+                <ul class="nav nav--stacked">
+                    <li>Home</li>
+                    <li>Featured Posts</li>
+                    <li>Tags</li>
+                </ul>
+            </section>
+            <section class="idea float--right visuallyhidden">
+                <h3>IDEA</h3>
+                <ul class="nav nav--stacked">
+                    <li>Home</li>
+                    <li>People</li>
+                    <li>Thesis 2014</li>
+                </ul>
+            </section>
+            <section class="desComp float--right visuallyhidden">
+                <h3>Design Computing</h3>
+                <ul class="nav nav--stacked">
+                    <li>Home</li>
+                    <li>People</li>
+                    <li>Staff</li>
+                    <li>Digital Design Studio</li>
+                    <li>InfoViz Studio</li>
+                    <li>IxD Studio</li>
+                    <li>HCE Studio</li>
+                    <li>Press</li>
+                    <li>Course Page</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </section>
+        </nav>
 
-			<nav>
-				<ul>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-				</ul>
-			</nav>
-		</header>
 
-		<main id="content" role="main">
-			{% block content %}
-				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-			{% endblock %}
-		</main>
+        <script src="{{ siteUrl }}scripts/38d5a428.vendor.js"></script>
 
-		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://buildwithcraft.com">Craft</a>
-		</footer>
-	</div>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <script src="{{ siteUrl }}scripts/c1316480.main2.js"></script>
 </body>
 </html>

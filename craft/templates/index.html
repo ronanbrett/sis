@@ -20,14 +20,16 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<h1>{{ entry.heading }}</h1>
-
-	{{ entry.body }}
-
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+	<section class="featuresList three-quarters">
+		{% for entry in craft.entries.section('designLab').find() %}
+		{% if entry.type == 'designLabNews'%}
+		{% include "_includes/blog/blog--feature.html" with {'pType':'blog'} %}
+		{% elseif entry.type == 'designLabIncludedNews' %}
+			{% for entry in entry.designLabFeaturedContent %}
+				{% include "_includes/blog/blog--feature.html" with {'pType':'project'}  %}
+			{% endfor %}
+		{% endif %}
 		{% endfor %}
-	</ul>
+    </section>
+    {% include "_includes/island/island--ixd.html"%}
 {% endblock %}

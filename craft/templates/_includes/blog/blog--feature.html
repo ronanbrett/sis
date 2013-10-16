@@ -1,0 +1,23 @@
+<article class="post push--bottom">
+    <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push--bottom">
+    <div class="flyIn flyIn--left flyIn--thin flyIn--top bkCol--rockingOrange transition--fast">
+        <h6></h6>
+    </div>
+    <div class="flyIn flyIn--right flyIn--list flyIn--bottom transition--slow">
+        <dl>
+            {% for tag in entry.tags %}
+            <dt>{{tag}}</dt>
+            {% endfor %}
+        </dl>
+    </div>
+    <h1>{{ entry.title}} </h1>
+    <h2>
+    {% if pType == 'other' %}
+    {{ entry.projectDescription }}
+    {% endif %}
+
+    {{ entry.heading }}
+
+
+    <br><a href="{{ entry.url }}">Read More</a></h2>
+</article>

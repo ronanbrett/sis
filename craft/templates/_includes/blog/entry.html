@@ -1,0 +1,27 @@
+{#
+ # Blog Entry
+ # ---------------
+ #
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+<section class="one-whole">
+	<img src="{{entry.featuredImage[0].getUrl('blogImageTransform')}}" alt="" class="push--bottom one-whole">
+</section>
+<section class="blog-post three-quarters float--left">
+    <h1 class="flush--bottom">{{entry.title}}</h1>
+    <p class="byline push-half--bottom">By {{entry.author}}t</p>
+    {% include "_includes/social/blog.html" with {'pType':'project'}  %}
+    {{entry.body}}
+
+</section>
+
+{% if island == 'desComp' %}
+    {% include "_includes/island/island--desComp.html"%}
+{% elseif island == 'desLab' %}
+    {% include "_includes/island/island.html"%}
+{% endif %}
+
+{% endblock %}
