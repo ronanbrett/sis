@@ -1,0 +1,79 @@
+{#
+#
+#
+#
+# IxD Project Template
+#
+#
+#
+#}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<div class="ui__bar push--bottom"></div>
+        <div class="project three-quarters float--left">
+            <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="">
+            <h1>{{ entry. title }}</h1>
+            <ul class="nav one-whole">
+                <li class="active"><a href="#">Grounding</a></li>
+                <li><a href="#">Sketching</a></li>
+                <li><a href="#">Mockups</a></li>
+                <li><a href="#">Evaluation</a></li>
+                <li><a href="#">Prototypes</a></li>
+                <li><a href="#">Presentation</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Documentation</a></li>
+            </ul>
+            <div class="project__section Grounding active" data-attr="">
+                <p>{{entry.grounding}}</p>
+            </div>
+            <div class="project__section Sketching" data-attr="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, modi, tempora obcaecati in molestiae rem illum totam neque mollitia ad vel officiis beatae sit.</p>
+            </div>
+            <div class="project__section Mockups" data-attr="">
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="project__section Evaluation" data-attr="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, iste, reprehenderit, optio fugit ullam modi non laborum quibusdam ab atque id dolores incidunt qui. Facere, sit dolore consequatur eum doloribus.</p>
+            </div>
+            <div class="project__section Prototypes" data-attr=""></div>
+            <div class="project__section Presentation" data-attr=""></div>
+            <div class="project__section Video" data-attr=""></div>
+            <div class="project__section Documentation"data-attr=""></div> 
+        </div>
+
+        
+
+        <div class="island one-quarter">
+            <div id="animLogo" class="desCompLogo"></div>
+            <section class="project__descrip">
+                <h3 class="border-bottom--thin push-half--bottom">Description</h3>
+                <p>{{ entry.projectDescription}} </p>
+            </section>
+            <section class="project__class">
+                <h3 class="border-bottom--thin push-half--bottom">Class</h3>
+                <p> {{entry.unit}} </p>
+            </section>
+            <section class="project__tags">
+                <h3 class="border-bottom--thin push-half--bottom">Tags</h3>
+                <ul class="nav nav--stacked">
+                {% for tag in entry.tags %}
+                    <li>{{tag}}</li>
+                {% endfor %}
+                </ul>
+            </section>
+            <section class="project__authors ">
+                <h3 class="border-bottom--thin push-half--bottom">Authors</h3>
+                <ul class="nav nav--stacked">
+                {% for person in entry.participants %}
+                    <li>{{ person }}</li>
+                </ul>
+                {% endfor %}
+            </section>
+            <section class="project__relatedProjects">
+                <h3 class="border-bottom--thin push-half--bottom">Related Projects</h3>
+            </section>
+         
+        </div>
+{% endblock %}

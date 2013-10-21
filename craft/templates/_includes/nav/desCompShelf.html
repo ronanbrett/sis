@@ -2,7 +2,7 @@
   <div id="" class="sideLogo sideLogo--desComp"></div>
   <div class="nav__item--submenu soft-half--left soft-half--top">
       <ul class="nav nav--stacked desCompLogoSwitch">
-          <li class="active"><a class="" href="#">News</a></li>
+          <li class="active"><a class="" href="{{url('design-computing')}}">News</a></li>
           <li><a href="#">Projects</a></li>
           <li><a href="#">Studios</a></li>
           <li><a href="#">People</a></li>
@@ -10,30 +10,13 @@
   </div>
   <div class="nav__item--longMenu" id="news">
       <div class="grid one-whole">
+            {% for entry in craft.entries.section('designComputing').limit(4).find() %}
              <div class="grid__item one-quarter" stlye="">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
+                 <div class="menuPane__newsBlock" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
+                     <a href="{{entry.url}}"><h3>{{entry.title}}</h3></a>
                  </div>
-             </div><!--
-
-          --><div class="grid__item one-quarter">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div><!--
-
-          --><div class="grid__item one-quarter">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div><!--
-
-          --><div class="grid__item one-quarter">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div>
-      </div>
+             </div>{% endfor %}
+        </div>
   </div>
   <div class="nav__item--longMenu visuallyhidden" id="projects">
       <div class="grid one-whole">

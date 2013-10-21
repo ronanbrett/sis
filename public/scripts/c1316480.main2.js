@@ -102,13 +102,15 @@ function App( containerId, color, speed  ) {
 
 var lastSelected;
 
-$('.nav__item').click(function(e){
+$('.nav__item').hover(function(e){
   if($(this).has('.nav__shelf').length>0){
-    e.preventDefault();
     $('.nav__item').removeClass('expanded');
-    $('.content').transition({ y: '240px' });
-    $('.nav__shelf').transition({ y: '0' });
+    $('.content').addClass('shoveDown');
     $(this).addClass('expanded');
+  }
+  else{
+  	$('.nav__item').removeClass('expanded');
+    $('.content').removeClass('shoveDown');
   }
 });
 
@@ -118,7 +120,6 @@ $('.desCompLogoSwitch').hover(function(){
 })
 
 $('.grid__item--course').hover(function(){
-
   var a = $(this).attr('id');
   switch (a){
     case "digDesStudioLogo":
@@ -157,7 +158,14 @@ function changeLogo(x,col){
 }
 
 
-
+$('.project .nav li').click(function(){
+  $('.project .nav li').removeClass('active');
+  $(this).addClass('active');
+  var link = '.'+$(this).text()
+  console.log(link);
+  $('.project__section').removeClass('active');
+  $('.project >' +link).addClass('active');
+})
 
 
 $('.sideLogo').hover(function(){
