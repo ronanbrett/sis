@@ -33,14 +33,29 @@
 
 
         <header>
-            <h1 class="giga float--left">DesignLab</h1>
-            <ul class="nav">
-                    <li><a href="course/index.html">IDEA</a></li>
-                    <li><a href="#">Design Computing</a></li>
-                    <li><a href="#">Research</a></li>
-                
-            </ul>
-            <button href="#" id="openMenu" data-effect="st-effect-3" class="float--right">Menu</button>
+            <div class="navigation">
+                <div class="nav__logo"><h1>DesignLab</h1></div>
+                <ul class="nav">
+                    <li class="nav__item" data-pane="desComp" id="desComp">
+                        <a href="course/index.html">Design Computing</a>
+                        {% include "_includes/nav/desCompShelf.html" %}
+                    </li>
+                    <li class="nav__item">
+                        <a href="course/index.html" data-pane="idea" id="idea">IDEA</a>
+                        {% include "_includes/nav/ideaShelf.html" %}
+                    </li>
+                    <li class="nav__item">
+                        <a href="course/index.html" data-pane="research">Research</a>
+                        <div class="nav__shelf"></div>
+                    </li>
+                    <li class="nav__item">
+                        <a href="course/index.html" data-pane="people">People</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="course/index.html" data-pane="projects">Projects</a>
+                    </li>
+                </ul>
+            </div>
         </header>
 
         <div class="content">
@@ -52,48 +67,7 @@
 
        
         </div>
-        <nav class="st-menu" id="menu-3">
-            <div class="selector float--left">
-                <div id="" class="sideLogo sideLogo--desLab active"></div>
-                <div id="" class="sideLogo sideLogo--idea"></div>
-                <div id="" class="sideLogo sideLogo--desComp"></div>
-                <div id="" class="sideLogo sideLogo--ixd"></div>
-            </div>
-            <section class="desLab float--right">
-                <h3>Design Lab</h3>
-                <ul class="nav nav--stacked">
-                    <li>Home</li>
-                    <li>Featured Posts</li>
-                    <li>Tags</li>
-                </ul>
-            </section>
-            <section class="idea float--right visuallyhidden">
-                <h3>IDEA</h3>
-                <ul class="nav nav--stacked">
-                    <li>Home</li>
-                    <li>People</li>
-                    <li>Thesis 2014</li>
-                </ul>
-            </section>
-            <section class="desComp float--right visuallyhidden">
-                <h3>Design Computing</h3>
-                <ul class="nav nav--stacked">
-                    <li>Home</li>
-                    <li>People</li>
-                    <li>Staff</li>
-                    <li>Digital Design Studio</li>
-                    <li>InfoViz Studio</li>
-                    <li>IxD Studio</li>
-                    <li>HCE Studio</li>
-                    <li>Press</li>
-                    <li>Course Page</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </section>
-        </nav>
+       
 
 
         <script src="{{ siteUrl }}scripts/38d5a428.vendor.js"></script>
