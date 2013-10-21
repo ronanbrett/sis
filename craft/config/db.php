@@ -23,5 +23,11 @@ return array(
         'password' => 'd3f5300a',
         'database' => 'deslabDAsrUI76VU',
     ),
+    '.net' => array(
+        'server' => 'us-cdbr-azure-east-c.cloudapp.net',
+        'user' => 'bed79fe94a4b59',
+        'password' => 'd3f5300a',
+        'database' => 'deslabDAsrUI76VU',
+    ),
 );
 
