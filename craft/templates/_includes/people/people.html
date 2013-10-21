@@ -21,10 +21,27 @@
 
 	    --></div>
 
+	<!--[if lte IE 7]></div><![endif]-->
+	</section>
+	{% include "_includes/island/island--desComp.html"%}
+{% endif %}
+{% if title == 'interaction-design' %}
+	<section class="three-quarters float--left anim">
+	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
+	   <div class="grid studentList one-whole">
+			{% for entry in craft.users.group('interactionDesign').find() %}
+	       <div class="grid__item one-third push--bottom">
+	           <a href="{{siteUrl}}user/{{entry.username}}"><div class="student" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
+	           </div></a>
+	       </div>{% endfor %}
+	       <!--
+
+	    --></div>
 
 	<!--[if lte IE 7]></div><![endif]-->
 	</section>
-	
+	{% include "_includes/island/island--desComp.html"%}
 {% endif %}
+
 
 {% endblock %}

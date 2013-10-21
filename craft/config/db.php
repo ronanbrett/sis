@@ -8,20 +8,20 @@
  */
 
 return array(
-
-	// The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
-	'server' => 'localhost:3306',
-
-	// The database username to connect with.
-	'user' => 'root',
-
-	// The database password to connect with.
-	'password' => 'Ao21Ao21',
-
-	// The name of the database to select.
-	'database' => 'craft',
-
-	// The prefix to use when naming tables. This can be no more than 5 characters.
-	'tablePrefix' => 'craft',
-
+    '*' => array(
+        'tablePrefix' => 'craft',
+    ),
+    '.dev' => array(
+        'server' => 'localhost:3306',
+        'user' => 'root',
+        'password' => 'Ao21Ao21',
+        'database' => 'craft',
+    ),
+    '.com' => array(
+        'server' => 'us-cdbr-azure-east-c.cloudapp.net',
+        'user' => 'bed79fe94a4b59',
+        'password' => 'd3f5300a',
+        'database' => 'deslabDAsrUI76VU',
+    ),
 );
+

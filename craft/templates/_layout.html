@@ -34,29 +34,32 @@
 
         <header>
             <div class="navigation">
-                <div class="nav__logo"><h1>DesignLab</h1></div>
+                <div class="nav__logo"><a href="{{siteUrl}}"><h1>DesignLab</h1></a></div>
                 <ul class="nav">
                     <li class="nav__item" data-pane="desComp" id="desComp">
-                        <a href="course/index.html">Design Computing</a>
+                        <a href="{{url('design-computing')}}">Design Computing</a>
                         {% include "_includes/nav/desCompShelf.html" %}
                     </li>
                     <li class="nav__item">
-                        <a href="course/index.html" data-pane="idea" id="idea">IDEA</a>
+                        <a href="{{url('idea')}}" data-pane="idea" id="idea">IDEA</a>
                         {% include "_includes/nav/ideaShelf.html" %}
                     </li>
                     <li class="nav__item">
-                        <a href="course/index.html" data-pane="research">Research</a>
+                        <a href="{{url('research')}}" data-pane="research">Research</a>
                         <div class="nav__shelf"></div>
                     </li>
                     <li class="nav__item">
-                        <a href="course/index.html" data-pane="people">People</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="course/index.html" data-pane="projects">Projects</a>
+                        <a href="{{url('people')}}" data-pane="people">People</a>
                     </li>
                 </ul>
             </div>
         </header>
+
+        <section class="secondNav">
+            {% block secondNav %}
+        
+            {% endblock %}
+        </section>
 
         <div class="content">
 

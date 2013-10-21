@@ -1,0 +1,23 @@
+{#
+ # IxD Projects  Template
+ # ---------------
+ #
+ #}
+
+{% extends "_layout" %}
+
+{% block secondNav%}
+	{% include "_includes/nav/ixdSecondNav.html"%}
+{% endblock %}
+
+
+{% block content %}
+	<section class="featuresList three-quarters">
+		{% for entry in craft.entries.section('interactionDesignAdmin').find() %}
+		{% if entry.type == 'news'%}
+		{% include "_includes/blog/blog--feature.html" with {'pType':'blog'} %}
+		{% endif %}
+		{% endfor %}
+    </section>
+    {% include "_includes/island/island--desComp.html"%}
+{% endblock %}

@@ -105,15 +105,23 @@ var lastSelected;
 $('.nav__item').hover(function(e){
   if($(this).has('.nav__shelf').length>0){
     $('.nav__item').removeClass('expanded');
-    $('.content').addClass('shoveDown');
+    $('.content,.secondNav').addClass('shoveDown');
     $(this).addClass('expanded');
+    $('.content').hover(closeMenu);
+
   }
   else{
   	$('.nav__item').removeClass('expanded');
-    $('.content').removeClass('shoveDown');
+    $('.content,.secondNav').removeClass('shoveDown');
   }
 });
 
+
+function closeMenu(e){
+	e.stopPropagation();
+	$('.nav__item').removeClass('expanded');
+    $('.content,.secondNav').removeClass('shoveDown');
+}
 
 $('.desCompLogoSwitch').hover(function(){
   changeLogo('.sideLogo--desComp','ff0052');

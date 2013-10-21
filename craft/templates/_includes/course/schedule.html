@@ -1,0 +1,49 @@
+{#
+ # Schedule Entry
+ # ---------------
+ #
+ #}
+
+{% extends "_layout" %}
+
+{% block secondNav%}
+	{% include "_includes/nav/ixdSecondNav.html"%}
+{% endblock %}
+
+{% block content %}
+<div class="ui__bar push--bottom"></div>
+<section class="three-quarters float--left course__schedule">
+{% if entry.schedule | length %}
+    <h1>Schedule</h1>
+
+    <table>
+    <thead>
+    	<th>Week</th>
+    	<th>Date</th>
+    	<th>Fri 10-11 (ALT3)</th>
+    	<th>Fri 11-1 (313)</th>
+    	<th>Fri 2-5 (313)</th>
+    	<th>Due (Thu 8pm)</th>
+    	</thead>
+
+        {% for item in entry.schedule %}
+        	<tr>
+            	<td>{{item.week}}</td>
+            	<td>{{item.date}}</td>
+            	<td>{{item.fri10 | raw}}</td>
+            	<td>{{item.fri11 | raw}}</td>
+            	<td>{{item.fri2 | raw}}</td>
+            	<td>{{item.due | raw}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</section>
+
+{% if island == 'desComp' %}
+    {% include "_includes/island/island--desComp.html"%}
+{% elseif island == 'desLab' %}
+    {% include "_includes/island/island.html"%}
+{% endif %}
+
+{% endblock %}

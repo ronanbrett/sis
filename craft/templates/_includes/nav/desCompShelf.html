@@ -3,42 +3,27 @@
   <div class="nav__item--submenu soft-half--left soft-half--top">
       <ul class="nav nav--stacked desCompLogoSwitch">
           <li class="active"><a class="" href="{{url('design-computing')}}">News</a></li>
-          <li><a href="#">Projects</a></li>
+          <li><a href="{{url('design-computing/projects')}}">Projects</a></li>
           <li><a href="#">Studios</a></li>
-          <li><a href="#">People</a></li>
+          <li><a href="{{url('design-computing/people')}}">People</a></li>
       </ul>
   </div>
   <div class="nav__item--longMenu" id="news">
-      <div class="grid one-whole">
-            {% for entry in craft.entries.section('designComputing').limit(4).find() %}
-             <div class="grid__item one-quarter" stlye="">
-                 <div class="menuPane__newsBlock" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
+      <div class="one-whole">
+            {% for entry in craft.entries.section('designComputing').type('designComputingNews').limit(4).find() %}
+                 <div class="menuPane__newsBlock one-quarter float--left" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
                      <a href="{{entry.url}}"><h3>{{entry.title}}</h3></a>
                  </div>
-             </div>{% endfor %}
+             {% endfor %}
         </div>
   </div>
   <div class="nav__item--longMenu visuallyhidden" id="projects">
-      <div class="grid one-whole">
-             <div class="grid__item one-third" stlye="">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
+      <div class="one-whole">
+      {% for entry in craft.entries.section('project').limit(3).find({search: "course:Design Computing"}) %}
+                 <div class="menuPane__newsBlock one-third float--left"  style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
+                     <a href="{{entry.url}}"><h3>{{ entry.title }}</h3></a>
                  </div>
-             </div><!--
-
-          --><div class="grid__item one-third">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div><!--
-
-          --><div class="grid__item one-third">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div><!--
-
-          -->
+      {% endfor %}
       </div>
   </div>
   <div class="nav__item--longMenu visuallyhidden" id="studios">
@@ -57,10 +42,10 @@
       <div class="one-quarter grid__item--course" id="ixdStudio">
           <p class="push-half--bottom">Interaction Design Studio</p>
           <ul class="nav nav--stacked">
-             <li><a href="#">News</a></li>
+             <li><a href="{{url('interaction-design')}}">News</a></li>
              <li><a href="#">Projects</a></li>
              <li><a href="#">Assignments</a></li>
-             <li><a href="#">Schedule</a></li>
+             <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schedule</a></li>
              <li><a href="#">Resources</a></li>
              <li><a href="#">People</a></li>
          </ul>
