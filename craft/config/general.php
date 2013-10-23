@@ -8,15 +8,13 @@
  */
 
 return array(
-	 '*' => array(
-        'devMode' => true
+	'*' => array(
     ),
-	  '.com' => array(
-	  	'devMode' =false
-
+    '.dev' => array(
+		'devMode' => true
+    ),
+    '.com' => array(
     ),
     '.net' => array(
-    	'devMode' =false
     ),
-	
 );
