@@ -1,0 +1,30 @@
+{#
+#
+#
+#       List of Blog Entrys for News Section of Course Pages
+#
+#
+#}
+
+
+
+<article class="post push--bottom">
+    <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push--bottom">
+    {% include "_includes/typeBox/typeBox--custom.html" with {"type":pType} %}
+    <div class="flyIn flyIn--right flyIn--list flyIn--bottom transition--slow">
+        <dl>
+            {% for tag in entry.tags %}
+            <dt>{{tag}}</dt>
+            {% endfor %}
+        </dl>
+    </div>
+    <h1>{{ entry.title}} </h1>
+    <h2>
+    {% if pType == 'project' %}
+    {{ entry.projectDescription }}
+    {% endif %}
+    {{ entry.heading }}
+
+
+    <br><a href="{{ entry.url }}">Read More</a></h2>
+</article>

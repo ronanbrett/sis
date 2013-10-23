@@ -7,6 +7,16 @@
 {% extends "_layout" %}
 
 {% set title = craft.request.getSegment(1) %}
+
+{% block secondNav %}
+{% if title == 'interaction-design' %}
+	{% include "_includes/nav/ixdSecondNav.html"%}
+{% endif %}
+{% endblock %}
+
+
+
+
 {% block content %}
 {% if title == 'design-computing' %}
 	<section class="three-quarters float--left anim">

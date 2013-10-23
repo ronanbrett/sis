@@ -1,0 +1,103 @@
+{% block secondNav%}
+	{% include "_includes/nav/ixdSecondNav.html"%}
+{% endblock %}
+
+
+{#
+#
+#
+#
+# IxD Assignment Template
+#
+#
+#
+#}
+
+{% extends "_layout" %}
+
+{% block content %}
+    <div class="ui__bar push--bottom"></div>
+        <div class="assignment three-quarters float--left">
+        <h1>{{entry.title}}</h1>
+        <ul class="nav one-whole">
+                <li class="active"><a href="#">Brief</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Inspiration</a></li>
+                <li><a href="#">Submissions</a></li>
+            </ul>
+
+        
+
+
+        <div class="assignment__section Brief active" data-attr="">
+            <p>{{entry.designBrief}}</p>
+        </div>
+        <div class="assignment__section FAQ" data-attr="">
+            <p>{{entry.submissionDetails}}</p>
+        </div>
+        <div class="assignment__section Resources" data-attr="">
+            <p>{{entry.submissionResources}}</p>
+        </div>
+        <div class="assignment__section Inspiration" data-attr="">
+            <p>{{entry.submissionResources}}</p>
+        </div>
+        <div class="assignment__section Submissions" data-attr="">
+        <div class="ui__bar push--bottom ui__bar--medium"></div>
+            <table id="submission-list">
+            <thead>
+                <th class="sort" data-sort="title">Title</th>
+                <th class="sort" data-sort="students">Students</th>
+                <th class="sort" data-sort="date">Date Submitted</th>
+                <th colspan="2">
+                                    <input type="text" class="search" placeholder="Search" />
+                                </th>
+            </thead>
+            <tbody class="list">
+            {% for submissions in craft.entries.section('interactionDesign').type('assignment').find({search: "interactionDesignAssignmentNumber:Assignment 1"}) %}
+                <tr>
+                    <td class="title"><a href="{{submissions.url}}">{{submissions.title}}</a></td>
+                    <td class="students">{% for stu in submissions.participants %}{% if stu|length == 0 %}{{stu.fullName}}{% elseif stu|length > 0  %}{{stu.fullName}}. {% endif %}{% endfor %}
+                    </td>
+                    <td class="date" >{{submissions.dateUpdated}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+
+        </div>
+
+
+
+        
+
+        <div class="island one-quarter">
+            <div id="animLogo" class="desCompLogo"></div>
+            <section class="project__descrip">
+                <h3 class="border-bottom--thin push-half--bottom">Due Date</h3>
+                <p>{{ entry.dueDate}} </p>
+            </section>
+            <section class="project__tags">
+                <h3 class="border-bottom--thin push-half--bottom">Tags</h3>
+                <ul class="nav nav--stacked">
+                {% for tag in entry.tags %}
+                    <li>{{tag}}</li>
+                {% endfor %}
+                </ul>
+            </section>
+            <section class="project__authors ">
+                <h3 class="border-bottom--thin push-half--bottom">Authors</h3>
+                <ul class="nav nav--stacked">
+                {% for person in entry.participants %}
+                    <li>{{ person }}</li>
+                </ul>
+                {% endfor %}
+            </section>
+            <section class="project__relatedProjects">
+                <h3 class="border-bottom--thin push-half--bottom">Related Projects</h3>
+            </section>
+         
+        </div>
+{% endblock %}

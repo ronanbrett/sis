@@ -15,7 +15,7 @@
 	<section class="featuresList three-quarters">
 		{% for entry in craft.entries.section('interactionDesignAdmin').find() %}
 		{% if entry.type == 'news'%}
-		{% include "_includes/blog/blog--feature.html" with {'pType':'blog'} %}
+		{% include "_includes/blog/blogList--course.html" with {'pType':'Interaction Design'} %}
 		{% endif %}
 		{% endfor %}
     </section>

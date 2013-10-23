@@ -1,0 +1,61 @@
+{% block secondNav%}
+	{% include "_includes/nav/ixdSecondNav.html"%}
+{% endblock %}
+
+
+{#
+#
+#
+#
+# IxD Assignment Template
+#
+#
+#
+#}
+
+{% extends "_layout" %}
+
+{% block content %}
+    <div class="ui__bar push--bottom"></div>
+        <div class="assignment three-quarters float--left">
+        <h1>{{entry.title}}</h1>
+        <p>{{entry.body}}</p>
+    
+
+        
+
+        </div>
+
+
+
+        
+
+        <div class="island one-quarter">
+            <div id="animLogo" class="desCompLogo"></div>
+            <section class="project__descrip">
+                <h3 class="border-bottom--thin push-half--bottom">Assignment Number</h3>
+                <p>{{ entry.interactionDesignAssignmentNumber}} </p>
+            </section>
+            <section class="project__tags">
+                <h3 class="border-bottom--thin push-half--bottom">Tags</h3>
+                <ul class="nav nav--stacked">
+                {% for tag in entry.tags %}
+                    <li>{{tag}}</li>
+                {% endfor %}
+                </ul>
+            </section>
+            <section class="project__authors ">
+                <h3 class="border-bottom--thin push-half--bottom">Authors</h3>
+                <ul class="nav nav--stacked">
+                {% for person in entry.participants %}
+                    <li>{{ person }}</li>
+                    {% endfor %}
+                </ul>
+                
+            </section>
+            <section class="project__relatedProjects">
+                <h3 class="border-bottom--thin push-half--bottom">Related Projects</h3>
+            </section>
+         
+        </div>
+{% endblock %}

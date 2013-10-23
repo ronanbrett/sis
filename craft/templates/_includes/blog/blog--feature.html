@@ -1,8 +1,14 @@
+{#
+#
+#
+#       List of Blog Entrys for News Section for General
+#
+#
+#}
+
 <article class="post push--bottom">
     <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push--bottom">
-    <div class="flyIn flyIn--left flyIn--thin flyIn--top bkCol--rockingOrange transition--fast">
-        <h6></h6>
-    </div>
+    {% include "_includes/typeBox/typeBox.html" %}
     <div class="flyIn flyIn--right flyIn--list flyIn--bottom transition--slow">
         <dl>
             {% for tag in entry.tags %}

@@ -1,0 +1,28 @@
+{#
+ # IxD Projects  Template
+ # ---------------
+ #
+ #}
+
+{% extends "_layout" %}
+
+{% block secondNav%}
+	{% include "_includes/nav/ixdSecondNav.html"%}
+{% endblock %}
+
+
+{% block content %}
+	<section class="course__assignments three-quarters float--left">
+	{% for entry in craft.entries.section('interactionDesignAdmin').type('assignments').find() %}
+            <div>
+                <h1>{{entry.title}}</h1>
+                <h3 class="">Due Date: {{entry.dueDate}}</h3>
+                
+                <a href="{{entry.url}}">Find out more about Assignment 1</a>
+
+            </div>
+            <div class="ui__bar push--bottom push--top"></div>
+            {% endfor %}
+        </section>
+    {% include "_includes/island/island--desComp.html"%}
+{% endblock %}

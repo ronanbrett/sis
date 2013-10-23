@@ -1,0 +1,24 @@
+{#
+#
+#
+# 	Type Box for Blog Posts - Changes colour based on type
+#
+#
+#}
+
+
+{% set type = entry.course %}
+
+{% if type== ""%}
+<div class="feature__typeBox bkCol--rockingOrange">
+    <h6>Design Lab</h6>
+</div>
+{% elseif type=="Design Computing" %}
+<div class="feature__typeBox bkCol--ravePink">
+    <h6>Design Computing</h6>
+</div>
+{% elseif type=="IDEA" %}
+<div class="feature__typeBox bkCol--babyBlue">
+    <h6>IDEA</h6>
+</div>
+{% endif %}

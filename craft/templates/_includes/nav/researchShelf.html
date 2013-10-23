@@ -1,0 +1,91 @@
+{#
+#
+#  Research Shelf
+#
+#
+#}
+
+
+<div class="nav__shelf" id="researchShelf">
+  <div id="" class="sideLogo sideLogo--res"></div>
+  <div class="nav__item--submenu soft-half--left soft-half--top">
+      <ul class="nav nav--stacked desCompLogoSwitch">
+          <li class="active"><a class="" href="{{url('design-computing')}}">News</a></li>
+          <li><a href="{{url('design-computing/projects')}}">Areas</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="{{url('design-computing/people')}}">People</a></li>
+      </ul>
+  </div>
+  <div class="nav__item--longMenu" id="news">
+      <div class="one-whole">
+            {% for entry in craft.entries.section('designComputing').type('designComputingNews').limit(4).find() %}
+                 <div class="menuPane__newsBlock one-quarter float--left" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
+                     <a href="{{entry.url}}"><h3>{{entry.title}}</h3></a>
+                 </div>
+             {% endfor %}
+        </div>
+  </div>
+  <div class="nav__item--longMenu visuallyhidden" id="areas">
+      <div class="one-whole soft-half">
+	      <ul class="nav nav--stacked">
+	      	<li><a href="#">Computational Design</a></li>
+	      	<li><a href="#">Design Studies</a></li>
+	      	<li><a href="#">Electronic Art and Design</a></li>
+	      	<li><a href="#">Information Visualization and Sonification</a></li>
+	      	<li><a href="#">Interaction Design</a></li>
+	      	<li><a href="#">Pervasive and Physical Computing</a></li>
+	      	<li><a href="#">Virtual Environments and Virtual Reality</a></li>
+      	</ul>
+      </div>
+  </div>
+  <div class="nav__item--longMenu visuallyhidden" id="studios">
+      <div class="one-quarter grid__item--course" id="digDesStudioLogo">
+         <p class="push-half--bottom">Digital Design Studio</p>
+         <ul class="nav nav--stacked">
+             <li><a href="#">News</a></li>
+             <li><a href="#">Projects</a></li>
+             <li><a href="#">Assignments</a></li>
+             <li><a href="#">Schedule</a></li>
+             <li><a href="#">Resources</a></li>
+             <li><a href="#">People</a></li>
+         </ul>
+      </div>
+
+      <div class="one-quarter grid__item--course" id="ixdStudio">
+          <p class="push-half--bottom">Interaction Design Studio</p>
+          <ul class="nav nav--stacked">
+             <li><a href="{{url('interaction-design')}}">News</a></li>
+             <li><a href="{{url('interaction-design/projects')}}">Projects</a></li>
+             <li><a href="{{url('interaction-design/assignments')}}">Assignments</a></li>
+             <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schedule</a></li>
+             <li><a href="#">Resources</a></li>
+             <li><a href="{{url('interaction-design/people')}}">People</a></li>
+         </ul>
+      </div>
+
+      <div class="one-quarter grid__item--course" id="infoVisStudio">
+         <p class="push-half--bottom">Information Visualisation Studio</p>
+         <ul class="nav nav--stacked">
+             <li><a href="#">News</a></li>
+             <li><a href="#">Projects</a></li>
+             <li><a href="#">Assignments</a></li>
+             <li><a href="#">Schedule</a></li>
+             <li><a href="#">Resources</a></li>
+             <li><a href="#">People</a></li>
+         </ul>
+          
+      </div>
+
+      <div class="one-quarter grid__item--course" id="humanComputerLogo">
+         <p class="push-half--bottom">Human Computer Interaction Design Studio</p>
+         <ul class="nav nav--stacked">
+             <li><a href="#">News</a></li>
+             <li><a href="#">Projects</a></li>
+             <li><a href="#">Assignments</a></li>
+             <li><a href="#">Schedule</a></li>
+             <li><a href="#">Resources</a></li>
+             <li><a href="#">People</a></li>
+         </ul>
+      </div>
+  </div>
+</div>

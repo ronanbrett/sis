@@ -21,7 +21,11 @@ function init() {
 }
 
 
+var options = {
+    valueNames: [ 'title', 'students' ,'date']
+};
 
+var submissionList = new List('submission-list', options);
 
 function animate() {
 
@@ -111,15 +115,15 @@ $('.nav__item').hover(function(e){
 
   }
   else{
-  	$('.nav__item').removeClass('expanded');
+    $('.nav__item').removeClass('expanded');
     $('.content,.secondNav').removeClass('shoveDown');
   }
 });
 
 
 function closeMenu(e){
-	e.stopPropagation();
-	$('.nav__item').removeClass('expanded');
+  e.stopPropagation();
+  $('.nav__item').removeClass('expanded');
     $('.content,.secondNav').removeClass('shoveDown');
 }
 
@@ -156,6 +160,7 @@ $('.nav__item--submenu li a').hover(function(){
 })
 
 
+
 function changeLogo(x,col){
   var c = '0x'+ col;
   for ( var i = 0; i < apps.length; ++i ) {
@@ -166,13 +171,19 @@ function changeLogo(x,col){
 }
 
 
-$('.project .nav li').click(function(){
-  $('.project .nav li').removeClass('active');
+
+$('.royalSlider').royalSlider({})
+
+
+$('.project .nav li, .assignment .nav li').click(function(e){
+  e.preventDefault();
+  $('.project .nav li,.assignment .nav li').removeClass('active');
   $(this).addClass('active');
   var link = '.'+$(this).text()
   console.log(link);
-  $('.project__section').removeClass('active');
+  $('.project__section,.assignment__section').removeClass('active');
   $('.project >' +link).addClass('active');
+  $('.assignment >' +link).addClass('active');
 })
 
 

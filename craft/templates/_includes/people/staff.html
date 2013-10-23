@@ -1,0 +1,34 @@
+{#
+ # Staff Section - Only for top level Design Lab
+ # ---------------
+ #
+ #}
+
+{% extends "_layout" %}
+
+
+{% block secondNav %}
+
+{% endblock %}
+
+
+
+{% block content %}
+	<section class="three-quarters float--left anim">
+	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
+	   <div class="grid staffList one-whole">
+			{% for entry in craft.users.group('designComputing2012').find() %}
+	       <div class="grid__item one-third push--bottom">
+	           <a href="{{siteUrl}}staff/{{entry.username}}"><div class="staff" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
+	           </div></a>
+	       </div>{% endfor %}
+	       <!--
+
+	    --></div>
+
+	<!--[if lte IE 7]></div><![endif]-->
+	</section>
+	{% include "_includes/island/island.html"%}
+
+
+{% endblock %}

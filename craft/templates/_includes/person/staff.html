@@ -1,0 +1,43 @@
+{#
+ # Staff Section - Works for All Immediate Sections
+ # ---------------
+ #
+ #}
+
+{% set user = craft.request.getSegment(2) %}
+{% for p in craft.users.find({username: user}) %}
+{% set title = 'hello'  %}
+{% endfor%}
+
+
+{% extends "_layout" %}
+
+{% block content %}
+
+{% for profile in craft.users.find({username: user}) %}
+<div class="studentProfile one-whole">
+	<div class="studentProfile--info push--bottom float--left one-whole soft--top">
+	    <div class="grid">
+	    	<div class="grid__item one-whole">
+	               <h3>{{profile.fullName}}</h3>
+	           </div><!--
+	        -->
+	        <div class="grid__item one-whole">
+	               <h3>Class: 2014</h3>
+	           </div><!--
+	        --><div class="grid__item one-third">
+	               <h3>Design Computing</h3>
+	           </div><!--
+	        -->
+	    </div>
+	    
+	</div>
+	<div class="studentProfile--image one-third float--left" style="background-image:url('{{profile.featuredImage[0].getUrl()}}')"></div>
+	<div class="studentProfile--bio two-thirds float--left soft--left">
+	    <q>{{profile.userProfile}}</q>
+	</div>
+	<div class="studentProfile__project one-whole float--left">
+</div>
+{% endfor%}
+
+{% endblock %}

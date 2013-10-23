@@ -1,0 +1,51 @@
+{#
+ # Computational Design Page
+ # ---------------
+ #
+ #}
+
+ {% extends "_layout" %}
+
+{% block secondNav%}
+{% endblock %}
+
+{% block content %}
+
+<section class="research__section one-whole float--left">
+	{% for researchSection in craft.entries.section('research').search('Computational Design').find() %}
+    <div class="research__about one-third float--left">
+        <h1>{{ researchSection.title }}</h1>
+        <p class="milli">{{ researchSection.researchAbout }}</p>
+    </div>
+    <div class="research__researchers two-thirds float--left">
+        <div class="royalSlider rsFeaturedStaff">
+        {% for user in craft.users.search('userTags:Computational Design').find() %}
+            <div class="rsContent">
+                <img src="{{user.featuredImage[0].getUrl('w400h450')}}" alt="">
+                <div class="text">
+                <h1>{{user.fullName}}</h1>
+                <p>{{user.userProfile}}<br><br>
+                	See {{user.friendlyName}}'s Research Opportunities at <a href="#">Research Supervisor Connect</a>
+
+                </p>
+                </div>
+                
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="research__publications one-whole float--left push--top ">
+        <h1>Latest Publications</h1>
+        {% for publication in craft.entries.section('publications').type('computationalDesign').find() %}
+        <div class="research__publication">
+            <h4 class="push-half--bottom weight--normal">{{publication.title}}</h4>
+            <h6 class="flush--bottom weight--light">Rosalind W. Picard, Akane Sano, Javier Hernandez Rivera, Jean Deprey, Matthew Goodwin and Miriam Zisook</h6>
+            {{publication.publicationAbstract}}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+
+</section>
+{% endblock %}

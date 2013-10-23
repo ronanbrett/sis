@@ -6,7 +6,7 @@
 
 {% set user = craft.request.getSegment(2) %}
 {% for p in craft.users.find({username: user}) %}
-{% set title = 'hello'  %}
+{% set title = p  %}
 {% endfor%}
 
 
@@ -36,8 +36,15 @@
 	<div class="studentProfile--bio two-thirds float--left soft--left">
 	    <q>{{profile.userProfile}}</q>
 	</div>
-	<div class="studentProfile__project one-whole float--left">
-</div>
+	<div class="studentProfile__projects one-whole float--left">
+			{% set searchTerm = profile.fullName %}
+		{% for project in craft.entries.section('project').search(searchTerm).find() %}
+			<div id="slides">
+				<img src="{{project.featuredImage[0].getUrl()}}" alt="">
+			</div>
+		{% endfor%}
+
+	</div>
 {% endfor%}
 
 {% endblock %}
