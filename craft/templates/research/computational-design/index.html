@@ -34,6 +34,13 @@
         {% endfor %}
         </div>
     </div>
+    <div class="research__projects one-whole float--left push--top">
+        <h1>Latest Projects</h1>
+        {% for project in craft.entries.section('project').type('researchProject').find() %}
+        <a href="{{ project.url}}"><div class="one-quarter research__project" style="background-image:url('{{ project.featuredImage[0].getUrl() }}');background-size:cover"></div></a>
+        {% endfor %}
+        
+    </div>
     <div class="research__publications one-whole float--left push--top ">
         <h1>Latest Publications</h1>
         {% for publication in craft.entries.section('publications').type('computationalDesign').find() %}

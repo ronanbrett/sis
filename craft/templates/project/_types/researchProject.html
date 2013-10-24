@@ -1,0 +1,50 @@
+{#
+#
+#
+#
+# IxD Project Template
+#
+#
+#
+#}
+
+{% extends "_layout" %}
+
+{% block content %}
+        <div class="project three-quarters float--left">
+            <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="">
+            <h1>{{ entry. title }}</h1>
+            <div class="project__section active" data-attr="">
+                {{entry.body}}
+            </div>
+            </div>
+           
+
+        <div class="island one-quarter">
+            <div id="animLogo" class="desCompLogo"></div>
+            <section class="project__descrip">
+                <h3 class="border-bottom--thin push-half--bottom">Description</h3>
+                <p>{{ entry.projectDescription}} </p>
+            </section>
+            <section class="project__tags">
+                <h3 class="border-bottom--thin push-half--bottom">Tags</h3>
+                <ul class="nav nav--stacked">
+                {% for tag in entry.tags %}
+                    <li>{{tag}}</li>
+                {% endfor %}
+                </ul>
+            </section>
+            <section class="project__authors ">
+                <h3 class="border-bottom--thin push-half--bottom">Authors</h3>
+                <ul class="nav nav--stacked">
+                {% for person in entry.participants %}
+                    <li>{{ person }}</li>
+                </ul>
+                {% endfor %}
+            </section>
+            <section class="project__relatedProjects">
+                <h3 class="border-bottom--thin push-half--bottom">Related Projects</h3>
+            </section>
+         
+        </div>
+{% endblock %}
