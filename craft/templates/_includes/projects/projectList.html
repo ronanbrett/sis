@@ -22,9 +22,9 @@
 	<section class="three-quarters float--left anim">
 	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
 	   <div class="grid studentList one-whole">
-			{% for entry in craft.users.group('designComputing2012').find() %}
+			{% for entry in craft.entries.section('project').type('interactionDesignProject').find() %}
 	       <div class="grid__item one-third push--bottom">
-	           <a href="{{siteUrl}}user/{{entry.username}}"><div class="student" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
+	           <a href="{{entry.url}}"><div class="student push-half--bottom" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
 	           </div></a>
 	       </div>{% endfor %}
 	       <!--
