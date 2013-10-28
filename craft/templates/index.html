@@ -20,13 +20,13 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<section class="featuresList three-quarters">
+	<section class="featuresList three-quarters palm-one-whole lap-one-whole">
 		{% for entry in craft.entries.section('designLab').find() %}
 		{% if entry.type == 'designLabNews'%}
 		{% include "_includes/blog/blog--feature.html" with {'pType':'blog'} %}
 		{% elseif entry.type == 'designLabIncludedNews' %}
 			{% for entry in entry.designLabFeaturedContent %}
-				{% include "_includes/blog/blog--feature.html" with {'pType':'project'}  %}
+				{% include "_includes/blog/blog--project.html" with {'pType':'project'}  %}
 			{% endfor %}
 		{% endif %}
 		{% endfor %}

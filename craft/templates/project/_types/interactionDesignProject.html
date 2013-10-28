@@ -12,7 +12,7 @@
 
 {% block content %}
 	<div class="ui__bar push--bottom"></div>
-        <div class="project three-quarters float--left">
+        <div class="project three-quarters palm-one-whole lap-one-whole float--left palm-soft--sides lap-soft--sides">
             <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="">
             <h1>{{ entry. title }}</h1>
             <ul class="nav one-whole">
@@ -49,8 +49,8 @@
 
         
 
-        <div class="island one-quarter">
-            <div id="animLogo" class="desCompLogo"></div>
+        <div class="island one-quarter visuallyhidden--palm visuallyhidden--lap soft--left soft--right">
+            <div id="animLogo" class="desCompLogo visuallyhidden--palm"></div>
             <section class="project__descrip">
                 <h3 class="border-bottom--thin push-half--bottom">Description</h3>
                 <p>{{ entry.projectDescription}} </p>
