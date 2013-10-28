@@ -7,7 +7,7 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<section class="featuresList three-quarters">
+	<section class="featuresList three-quarters palm-one-whole lap-one-whole">
 		{% for entry in craft.entries.section('designComputing').find() %}
 		{% if entry.type == 'designComputingNews'%}
 		{% include "_includes/blog/blogList--course.html" with {'pType':'Design Computing'} %}
