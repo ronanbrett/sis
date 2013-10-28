@@ -40,7 +40,9 @@
 
 {% if island == 'desComp' %}
     {% include "_includes/island/island--desComp.html"%}
-{% elseif island == 'desLab' %}
+{% elseif island == 'ixdLogo' %}
+    {% include "_includes/island/island--ixd.html"%}
+    {% elseif island == 'desLab' %}
     {% include "_includes/island/island.html"%}
 {% endif %}
 

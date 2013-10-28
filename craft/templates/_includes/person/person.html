@@ -34,7 +34,7 @@
 	</div>
 	<div class="studentProfile--image one-third float--left" style="background-image:url('{{profile.featuredImage[0].getUrl()}}')"></div>
 	<div class="studentProfile--bio two-thirds float--left soft--left">
-	    <q>{{profile.userProfile}}</q>
+	    {{profile.userProfile}}
 	</div>
 	<div class="studentProfile__projects one-whole float--left">
 			{% set searchTerm = profile.fullName %}

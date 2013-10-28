@@ -11,6 +11,7 @@ function init() {
    apps.push( new App( '.desLabLogo', '#FF3A20', 'slow' ));
    apps.push( new App( '.ideaLogo', '#2abfff', 'slow'  ));
    apps.push( new App( '.desCompLogo', '#ff0052', 'slow'  ));
+   apps.push( new App( '.ixdLogo', '#333', 'slow'  ));
 
    /*==========  Menu Logos  ==========*/
 

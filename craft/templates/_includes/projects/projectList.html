@@ -51,7 +51,12 @@
 
 	<!--[if lte IE 7]></div><![endif]-->
 	</section>
-	{% include "_includes/island/island--desComp.html"%}
+	{% if title == 'interaction-design' %}
+		{% include "_includes/island/island--ixd.html"%}
+	{% else %}
+		{% include "_includes/island/island--desComp.html"%}
+	{% endif %}
+	
 {% endif %}
 
 

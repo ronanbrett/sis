@@ -71,7 +71,7 @@
                 <h3 class="border-bottom--thin push-half--bottom">Authors</h3>
                 <ul class="nav nav--stacked">
                 {% for person in entry.participants %}
-                    <li>{{ person }}</li>
+                    <a href="{{siteUrl}}user/{{person.username}}"><li>{{ person }}</li></a>
                 </ul>
                 {% endfor %}
             </section>
