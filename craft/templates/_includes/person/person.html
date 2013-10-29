@@ -17,11 +17,11 @@
 {% for profile in craft.users.find({username: user}) %}
 <div class="studentProfile one-whole">
 	<div class="studentProfile__info push-half-bottom float--left one-whole soft--top">
-	 <h3>{{profile.fullName}}</h3>
+	 <h3 class="portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">{{profile.fullName}}</h3>
 	    
 	</div>
 	<div class="studentProfile__image one-third float--left palm-one-whole" style="background-image:url('{{profile.featuredImage[0].getUrl()}}')"></div>
-	<div class="studentProfile__bio two-thirds float--left soft--left clear palm-one-whole">
+	<div class="studentProfile__bio two-thirds float--left soft--left clear palm-one-whole portable-soft-half lap-soft-half palm-soft-half">
 	    {{profile.userProfile}}
 	</div>
 
@@ -29,7 +29,7 @@
 	
 	<div class="studentProfile__assignments one-quarter float--left soft--right palm-one-whole">
 		<div class="border-top--thin one-whole float--left push--top">
-			<h2 class="flush weight--light">Interests</h2>
+			<h2 class="flush weight--light portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">Interests</h2>
 			<ul class="nav">
 			{% for tags in profile.userTags %}
 				<li class="flush"><a href="#">{{tags}}</a></li>
@@ -41,7 +41,7 @@
 
 	<div class="studentProfile__projects three-quarters float--left palm-one-whole">
 	<div class="border-top--thin one-whole float--left push--top">
-		<h2 class="flush weight--light">{{profile.friendlyName}}'s Projects</h2>
+		<h2 class="flush weight--light portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">{{profile.friendlyName}}'s Projects</h2>
 	</div>
 			{% set searchTerm = profile.fullName %}
 
