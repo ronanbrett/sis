@@ -16,35 +16,50 @@
 
 {% for profile in craft.users.find({username: user}) %}
 <div class="studentProfile one-whole">
-	<div class="studentProfile--info push--bottom float--left one-whole soft--top">
-	    <div class="grid">
-	    	<div class="grid__item one-whole">
-	               <h3>{{profile.fullName}}</h3>
-	           </div><!--
-	        -->
-	        <div class="grid__item one-whole">
-	               <h3>Class: 2014</h3>
-	           </div><!--
-	        --><div class="grid__item one-third">
-	               <h3>Design Computing</h3>
-	           </div><!--
-	        -->
-	    </div>
+	<div class="studentProfile__info push-half-bottom float--left one-whole soft--top">
+	 <h3>{{profile.fullName}}</h3>
 	    
 	</div>
-	<div class="studentProfile--image one-third float--left" style="background-image:url('{{profile.featuredImage[0].getUrl()}}')"></div>
-	<div class="studentProfile--bio two-thirds float--left soft--left">
+	<div class="studentProfile__image one-third float--left palm-one-whole" style="background-image:url('{{profile.featuredImage[0].getUrl()}}')"></div>
+	<div class="studentProfile__bio two-thirds float--left soft--left clear palm-one-whole">
 	    {{profile.userProfile}}
 	</div>
-	<div class="studentProfile__projects one-whole float--left">
+
+	<div class="one-whole float--left"></div>
+	
+	<div class="studentProfile__assignments one-quarter float--left soft--right palm-one-whole">
+		<div class="border-top--thin one-whole float--left push--top">
+			<h2 class="flush weight--light">Interests</h2>
+			<ul class="nav">
+			{% for tags in profile.userTags %}
+				<li class="flush"><a href="#">{{tags}}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+	
+
+	<div class="studentProfile__projects three-quarters float--left palm-one-whole">
+	<div class="border-top--thin one-whole float--left push--top">
+		<h2 class="flush weight--light">{{profile.friendlyName}}'s Projects</h2>
+	</div>
 			{% set searchTerm = profile.fullName %}
+
+		<div class="royalSlider rsPerson__project rsDefault three-quarters" id="personProjectSlider">
 		{% for project in craft.entries.section('project').search(searchTerm).find() %}
-			<div id="slides">
-				<img src="{{project.featuredImage[0].getUrl()}}" alt="">
+			<div id="rsContent">
+				<img class="rsImg" src="{{project.featuredImage[0].getUrl()}}" alt="">
+				<div class="rsTmb">
+			        <h5>{{project.title}}</h5>
+			      </div>
 			</div>
 		{% endfor%}
+		</div>
 
 	</div>
+	
+
+</div>
 {% endfor%}
 
 {% endblock %}
