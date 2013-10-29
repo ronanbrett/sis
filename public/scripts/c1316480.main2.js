@@ -173,7 +173,7 @@ function changeLogo(x,col){
 
 
 
-$('.royalSlide').royalSlider({
+$('#researchFeaturedStaffSlider').royalSlider({
   imageScaleMode : 'fill'
 })
 

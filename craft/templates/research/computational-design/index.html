@@ -18,7 +18,7 @@
         <p class="milli">{{ researchSection.researchAbout }}</p>
     </div>
     <div class="research__researchers two-thirds float--left">
-        <div class="royalSlider rsFeaturedStaff">
+        <div class="royalSlider rsFeaturedStaff" id="researchFeaturedStaffSlider">
         {% for user in craft.users.search('userTags:Computational Design').find() %}
             <div class="rsContent">
                 <img src="{{user.featuredImage[0].getUrl('w400h450')}}" alt="">
