@@ -13,11 +13,11 @@
 
 <section class="research__section one-whole float--left">
 	{% for researchSection in craft.entries.section('research').search('Computational Design').find() %}
-    <div class="research__about one-third float--left">
+    <div class="research__about one-third float--left palm-one-whole">
         <h1>{{ researchSection.title }}</h1>
         <p class="milli">{{ researchSection.researchAbout }}</p>
     </div>
-    <div class="research__researchers two-thirds float--left">
+    <div class="research__researchers two-thirds float--left visuallyhidden--palm">
         <div class="royalSlider rsFeaturedStaff" id="researchFeaturedStaffSlider">
         {% for user in craft.users.search('userTags:Computational Design').find() %}
             <div class="rsContent">
@@ -41,7 +41,7 @@
         {% endfor %}
         
     </div>
-    <div class="research__publications one-whole float--left push--top ">
+    <div class="research__publications one-whole float--left push--top palm-soft-half--sides ">
         <h1>Latest Publications</h1>
         {% for publication in craft.entries.section('publications').type('computationalDesign').find() %}
         <div class="research__publication">
