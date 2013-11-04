@@ -18,9 +18,11 @@
   <div class="nav__item--longMenu descompShelf" id="news">
       <div class=" one-whole">
              {% for entry in craft.entries.section('idea').type('news').limit(4).find() %}
+             {% if entry.featuredImage|length %} 
                  <div class="menuPane__newsBlock one-quarter float--left" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
                      <a href="{{entry.url}}"><h3>{{entry.title}}</h3></a>
                  </div>
+              {% endif%}
              {% endfor %}
       </div>
   </div>

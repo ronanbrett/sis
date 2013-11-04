@@ -75,6 +75,12 @@
                 <p>{{ entry.projectDescription}} </p>
             </section>
             <section class="project__class">
+                <h3 class="border-bottom--thin push-half--bottom">Related Blog Posts</h3>
+                {% for blogPost in craft.entries.section('interactionDesign').type('blog').parentOf(entry.id).find() %}
+                <a href="{{blogPost.url}}"><p> {{blogPost.title}} </p></a>
+                {% endfor %}
+            </section>
+            <section class="project__class">
                 <h3 class="border-bottom--thin push-half--bottom">Class</h3>
                 <p> {{entry.unit}} </p>
             </section>

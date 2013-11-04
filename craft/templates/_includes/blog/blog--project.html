@@ -6,25 +6,47 @@
 #
 #}
 
-<article class="post push-half--bottom">
+{% if entry.featuredImage|length %} 
+<article class="post push--bottom">
     <a href="{{ entry.url }}"><img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push-half--bottom"></a>
     {% include "_includes/typeBox/typeBox.html" %}
-    <div class="tags">
+     <div class="tags">
         <dl>
             {% for tag in entry.tags %}
             <dt>{{tag}}</dt>
             {% endfor %}
         </dl>
     </div>
-    <h3 class="one-whole float--left weight--light push-half--bottom">{{entry.postDate|date("d F Y")}}</h3>
-    <h1 class="one-third palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">{{ entry.title}} </h1>
-    <h2 class="two-thirds palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">
-    {% if pType == 'project' %}
-    {{ entry.projectDescription }}
     {% endif %}
-    {{ entry.heading }} 
-
-
-    <br><a href="{{ entry.url }}">Read More</a></h2>
+    {% if entry.featuredImage|length %}
     
-</article>
+    <div class="one-third palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides push-half--bottom float--left border-right--thin">
+        <h1 class="push-half--bottom one-whole">{{ entry.title}} </h1>
+        <h5 class="float--left weight--light flush--bottom one-whole ">{{entry.postDate|date("d F Y")}}</h5>
+        <h4 class="float--left weight--light one-whole">By {{entry.author}}</h4>
+    </div>
+    <div class="two-thirds palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides float--left">
+        <h2 class="">
+        {% if pType == 'project' %}
+        {{ entry.projectDescription }}
+        {% endif %}
+        {{ entry.heading }}
+        <br><a href="{{ entry.url }}">Read More</a></h2>
+    </div> 
+    </article>
+{% else %}
+    <article class="noImagePost push--bottom">
+        <h1 class="one-whole push-half--bottom">{{entry.title}}</h1>
+        <h4 class="one-whole flush--bottom weight--light">By {{entry.author}}</h4>
+        <div class="border-bottom--thin one-quarter"></div>
+        <div class="one-whole push-half--top">
+            <p class="one-third float--left flush">{{entry.postDate|date('d F Y')}}</p>
+        </div>
+        <p class="one-whole push-half--top">{{entry.heading}}<br><a href="{{ entry.url }}">Read More</a></p>
+
+    </article>
+
+
+
+
+    {% endif %}

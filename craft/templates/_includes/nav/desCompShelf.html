@@ -18,18 +18,22 @@
   <div class="nav__item--longMenu" id="news">
       <div class="one-whole">
             {% for entry in craft.entries.section('designComputing').type('designComputingNews').limit(4).find() %}
+            {% if entry.featuredImage|length %} 
                  <div class="menuPane__newsBlock one-quarter float--left" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
                      <a href="{{entry.url}}"><h3>{{entry.title}}</h3></a>
                  </div>
+              {% endif %}
              {% endfor %}
         </div>
   </div>
   <div class="nav__item--longMenu visuallyhidden" id="projects">
       <div class="one-whole">
       {% for entry in craft.entries.section('project').limit(3).find({search: "course:Design Computing"}) %}
+      {% if entry.featuredImage|length %} 
                  <div class="menuPane__newsBlock one-third float--left"  style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
                      <a href="{{entry.url}}"><h3>{{ entry.title }}</h3></a>
                  </div>
+      {% endif %}
       {% endfor %}
       </div>
   </div>
@@ -38,6 +42,7 @@
          <p class="push-half--bottom">Digital Design Studio</p>
          <ul class="nav nav--stacked">
              <li><a href="{{url('interaction-design')}}">News</a></li>
+             <li><a href="{{url('interaction-design/blog')}}">Blog</a></li>
              <li><a href="{{url('interaction-design/projects')}}">Projects</a></li>
              <li><a href="{{url('interaction-design/assignments')}}">Assignments</a></li>
              <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schedule</a></li>
@@ -50,6 +55,7 @@
           <p class="push-half--bottom">Interaction Design Studio</p>
           <ul class="nav nav--stacked">
              <li><a href="{{url('interaction-design')}}">News</a></li>
+             <li><a href="{{url('interaction-design/blog')}}">Blog</a></li>
              <li><a href="{{url('interaction-design/projects')}}">Projects</a></li>
              <li><a href="{{url('interaction-design/assignments')}}">Assignments</a></li>
              <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schedule</a></li>
@@ -62,6 +68,7 @@
          <p class="push-half--bottom">Information Visualisation Studio</p>
          <ul class="nav nav--stacked">
              <li><a href="{{url('interaction-design')}}">News</a></li>
+             <li><a href="{{url('interaction-design/blog')}}">Blog</a></li>
              <li><a href="{{url('interaction-design/projects')}}">Projects</a></li>
              <li><a href="{{url('interaction-design/assignments')}}">Assignments</a></li>
              <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schedule</a></li>
@@ -75,6 +82,7 @@
          <p class="push-half--bottom">Human Computer Interaction Design Studio</p>
          <ul class="nav nav--stacked">
              <li><a href="{{url('interaction-design')}}">News</a></li>
+             <li><a href="{{url('interaction-design/blog')}}">Blog</a></li>
              <li><a href="{{url('interaction-design/projects')}}">Projects</a></li>
              <li><a href="{{url('interaction-design/assignments')}}">Assignments</a></li>
              <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schedule</a></li>
