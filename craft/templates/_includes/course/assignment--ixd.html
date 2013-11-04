@@ -7,7 +7,7 @@
 #
 #
 #
-# IxD Assignment Template
+# IxD Assignment Template - Student Assignment Template
 #
 #
 #
@@ -59,7 +59,7 @@
                     <td class="title"><a href="{{submissions.url}}">{{submissions.title}}</a></td>
                     <td class="students">{% for stu in submissions.participants %}{% if stu|length == 0 %}{{stu.fullName}}{% elseif stu|length > 0  %}{{stu.fullName}}. {% endif %}{% endfor %}
                     </td>
-                    <td class="date" >{{submissions.dateUpdated}}</td>
+                    <td class="date" >{{submissions.dateUpdated|date("d F Y")}}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -67,17 +67,13 @@
         </div>
 
 
-        </div>
-
-
-
-        
+        </div>        
 
         <div class="island one-quarter">
             <div id="animLogo" class="ixdLogo"></div>
             <section class="project__descrip">
                 <h3 class="border-bottom--thin push-half--bottom">Due Date</h3>
-                <p>{{ entry.dueDate}} </p>
+                <p>{{ entry.dueDate|date("d F Y")}} </p>
             </section>
             <section class="project__tags">
                 <h3 class="border-bottom--thin push-half--bottom">Tags</h3>

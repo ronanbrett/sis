@@ -16,10 +16,9 @@
 	{% for entry in craft.entries.section('interactionDesignAdmin').type('assignments').find() %}
             <div>
                 <h1>{{entry.title}}</h1>
-                <h3 class="">Due Date: {{entry.dueDate}}</h3>
+                <h3 class="">Due Date: {{entry.dueDate|date("d F Y")}}</h3>
                 
                 <a href="{{entry.url}}">Find out more about Assignment 1</a>
-
             </div>
             <div class="ui__bar push--bottom push--top"></div>
             {% endfor %}

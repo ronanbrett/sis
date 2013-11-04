@@ -9,7 +9,7 @@
 <article class="post push--bottom">
     <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push--bottom">
     {% include "_includes/typeBox/typeBox.html" %}
-    <div class="flyIn flyIn--right flyIn--list flyIn--bottom transition--slow">
+    <div class="tags">
         <dl>
             {% for tag in entry.tags %}
             <dt>{{tag}}</dt>
@@ -17,6 +17,7 @@
         </dl>
     </div>
     <h1 class="one-third palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">{{ entry.title}} </h1>
+    <h3 class="two-thirds float--left weight--light push-half--bottom">{{entry.postDate|date("d F Y")}}</h3>
     <h2 class="two-thirds palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides">
     {% if pType == 'project' %}
     {{ entry.projectDescription }}
@@ -25,4 +26,5 @@
 
 
     <br><a href="{{ entry.url }}">Read More</a></h2>
+    
 </article>

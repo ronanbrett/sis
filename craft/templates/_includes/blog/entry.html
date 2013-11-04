@@ -1,7 +1,7 @@
 {#
 #
 #
-# Blog Entry
+# Generic Blog Entry
 # ---------------
 #
 #}
@@ -24,8 +24,10 @@
     {% include "_includes/island/island--desComp.html"%}
 {% elseif island == 'ixdLogo' %}
     {% include "_includes/island/island--ixd.html"%}
-    {% elseif island == 'desLab' %}
+{% elseif island == 'desLab' %}
     {% include "_includes/island/island.html"%}
+{% elseif island == 'idea' %}
+    {% include "_includes/island/island--idea.html"%}
 {% endif %}
 
 {% endblock %}

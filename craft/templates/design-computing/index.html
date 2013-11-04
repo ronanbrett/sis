@@ -11,10 +11,6 @@
 		{% for entry in craft.entries.section('designComputing').find() %}
 		{% if entry.type == 'designComputingNews'%}
 		{% include "_includes/blog/blogList--course.html" with {'pType':'Design Computing'} %}
-		{% elseif entry.type == 'designLabIncludedNews' %}
-			{% for entry in entry.designLabFeaturedContent %}
-				{% include "_includes/blog/blog--feature.html" with {'pType':'project'}  %}
-			{% endfor %}
 		{% endif %}
 		{% endfor %}
     </section>

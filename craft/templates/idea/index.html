@@ -1,0 +1,18 @@
+{#
+ # IDEA Template
+ # ---------------
+ # pType = typeBox Setting
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<section class="featuresList three-quarters palm-one-whole lap-one-whole">
+		{% for entry in craft.entries.section('idea').find() %}
+		{% if entry.type == 'news'%}
+		{% include "_includes/blog/blogList--course.html" with {'pType':'IDEA'} %}
+		{% endif %}
+		{% endfor %}
+    </section>
+    {% include "_includes/island/island--idea.html"%}
+{% endblock %}

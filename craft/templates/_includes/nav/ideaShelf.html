@@ -16,30 +16,12 @@
       </ul>
   </div>
   <div class="nav__item--longMenu descompShelf" id="news">
-      <div class="grid one-whole">
-             <div class="grid__item one-quarter" stlye="">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
+      <div class=" one-whole">
+             {% for entry in craft.entries.section('idea').type('news').limit(4).find() %}
+                 <div class="menuPane__newsBlock one-quarter float--left" style="background:url('{{ entry.featuredImage[0].getUrl() }}');background-size:cover">
+                     <a href="{{entry.url}}"><h3>{{entry.title}}</h3></a>
                  </div>
-             </div><!--
-
-          --><div class="grid__item one-quarter">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div><!--
-
-          --><div class="grid__item one-quarter">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div><!--
-
-          --><div class="grid__item one-quarter">
-                 <div class="menuPane__newsBlock">
-                     <h3>Student Recreates Game of Thrones</h3>
-                 </div>
-             </div>
+             {% endfor %}
       </div>
   </div>
   <div class="nav__item--longMenu descompShelf visuallyhidden" id="projects">
@@ -66,8 +48,8 @@
       </div>
   </div>
   <div class="nav__item--longMenu visuallyhidden descompShelf" id="studios">
-      <div class="one-quarter grid__item--course" id="digDesStudioLogo">
-         <p class="push-half--bottom">IDEA Research Project</p>
+      <div class="one-fifth grid__item--course" id="digDesStudioLogo">
+         <p class="push-half--bottom">Design Thinking</p>
          <ul class="nav nav--stacked">
              <li><a href="#">News</a></li>
              <li><a href="#">Projects</a></li>
@@ -78,8 +60,8 @@
          </ul>
       </div>
 
-      <div class="one-quarter grid__item--course" id="ixdStudio">
-          <p class="push-half--bottom">IDEA Studios</p>
+      <div class="one-fifth grid__item--course" id="ixdStudio">
+          <p class="push-half--bottom">IDEA Studio 1</p>
           <ul class="nav nav--stacked">
              <li><a href="#">News</a></li>
              <li><a href="#">Projects</a></li>
@@ -90,8 +72,8 @@
          </ul>
       </div>
 
-      <div class="one-quarter grid__item--course" id="infoVisStudio">
-         <p class="push-half--bottom">IDEA LAB</p>
+      <div class="one-fifth grid__item--course" id="infoVisStudio">
+         <p class="push-half--bottom">IDEA Studio 2</p>
          <ul class="nav nav--stacked">
              <li><a href="#">News</a></li>
              <li><a href="#">Projects</a></li>
@@ -103,8 +85,19 @@
           
       </div>
 
-      <div class="one-quarter grid__item--course" id="humanComputerLogo">
-         <p class="push-half--bottom">IDEA DISSERTATIONS</p>
+      <div class="one-fifth grid__item--course" id="humanComputerLogo">
+         <p class="push-half--bottom">Screen Studio</p>
+         <ul class="nav nav--stacked">
+             <li><a href="#">News</a></li>
+             <li><a href="#">Projects</a></li>
+             <li><a href="#">Assignments</a></li>
+             <li><a href="#">Schedule</a></li>
+             <li><a href="#">Resources</a></li>
+             <li><a href="#">People</a></li>
+         </ul>
+      </div>
+      <div class="one-fifth grid__item--course" id="humanComputerLogo">
+         <p class="push-half--bottom">Cyber Studio</p>
          <ul class="nav nav--stacked">
              <li><a href="#">News</a></li>
              <li><a href="#">Projects</a></li>

@@ -1,8 +1,11 @@
 {#
- # People Section - Works for All Immediate Sections
+ #
+ #
+ # People Section - Works for All Immediate Sections Bar Design Lab People which is reserved for Staff
  # ---------------
  #
- #}
+ #
+#}
 
 {% set user = craft.request.getSegment(2) %}
 {% for p in craft.users.find({username: user}) %}
