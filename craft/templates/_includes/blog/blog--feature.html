@@ -23,7 +23,7 @@
     
     <div class="one-third palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides push-half--bottom float--left border-right--thin">
         <h1 class="push-half--bottom one-whole">{{ entry.title}} </h1>
-        <h4 class="float--left weight--light one-whole  push-half--bottom ">By {{entry.author}}</h4>
+        <a href="{{siteUrl}}user/{{entry.author.username}}"><h4 class="float--left weight--light one-whole  push-half--bottom ">By {{entry.author}}</h4></a>
         <div class="border-bottom--thin one-half float--left"></div>
         <h5 class="float--left weight--light push-half--top one-whole flush--bottom">{{entry.postDate|date("d F Y")}}</h5>
         <h5 class="float--left one-whole flush--bottom"><a class=" " href="{{entry.url}}/#disqus_thread" data-disqus-identifier="{{ entry.section }}-{{ entry.id }}">1 Comment</a></h5>
