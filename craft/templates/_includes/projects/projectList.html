@@ -35,6 +35,23 @@
 	</section>
 	{% include "_includes/island/island--desComp.html"%}
 {% endif %}
+{% if title == 'idea' %}
+	<section class="three-quarters float--left anim">
+	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
+	   <div class="grid studentList one-whole">
+			{% for entry in craft.entries.section('project').type('ideaProject').find() %}
+	       <div class="grid__item one-third push--bottom">
+	           <a href="{{entry.url}}"><div class="student push-half--bottom" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
+	           </div></a>
+	       </div>{% endfor %}
+	       <!--
+
+	    --></div>
+
+	<!--[if lte IE 7]></div><![endif]-->
+	</section>
+	{% include "_includes/island/island--idea.html"%}
+{% endif %}
 {% if title == 'interaction-design' %}
 	<section class="three-quarters float--left anim">
 	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
