@@ -7,7 +7,7 @@
 #}
 
 <article class="post push--bottom">
-    <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push--bottom">
+    <a href="{{ entry.url }}"><img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="" class="push--bottom"></a>
     {% include "_includes/typeBox/typeBox.html" %}
     <div class="tags">
         <dl>
