@@ -21,13 +21,13 @@
 
 {% block content %}
 	<section class="featuresList three-quarters palm-one-whole lap-one-whole">
-		{% for entry in craft.entries.section('designLab').find() %}
-		{% if entry.type == 'designLabNews'%}
+		{% set en = craft.entries.section('designLab').descendantOf('designLabNews').ids() %}
+		{% set e2 = craft.entries.childOf('designLabFeaturedContent').ids() %}
+		{% set en = en|merge(e2) %}
+		{% set entries = craft.entries.find({id: en}) %}
+		{% for entry in entries %}
+		{% if entry.type != 'designLabIncludedNews' %}
 		{% include "_includes/blog/blog--feature.html" with {'pType':'blog'} %}
-		{% elseif entry.type == 'designLabIncludedNews' %}
-			{% for entry in entry.designLabFeaturedContent %}
-				{% include "_includes/blog/blog--project.html" with {'pType':'project'}  %}
-			{% endfor %}
 		{% endif %}
 		{% endfor %}
     </section>

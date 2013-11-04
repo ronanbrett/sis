@@ -30,10 +30,11 @@
     </div>
     <div class="two-thirds palm-one-whole lap-one-whole portable-soft-half--sides lap-soft-half--sides palm-soft-half--sides float--left">
         <h2 class="soft-half--left palm-hard--left">
-        {% if pType == 'project' %}
+        {% if entry.projectDescription|length %}
         {{ entry.projectDescription }}
-        {% endif %}
+        {% else %}
         {{ entry.heading }}
+        {% endif %}
         <br><a href="{{ entry.url }}">Read More</a></h2>
     </div> 
     </article>
