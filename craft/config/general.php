@@ -9,7 +9,7 @@
 
 return array(
 	'*' => array(
-		'omitScriptNameInUrls' => true,
+		
     ),
     '.dev' => array(
 		'devMode' => true,
