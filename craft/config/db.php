@@ -18,10 +18,10 @@ return array(
         'database' => 'craft',
     ),
     '.net' => array(
-        'server' => 'us-cdbr-azure-west-b.cleardb.com',
-        'user' => 'b2a3c54e2decab',
-        'password' => '62caa123',
-        'database' => 'as_c5d075f7c574d83',
+        'server' => 'ap-cdbr-azure-east-b.cloudapp.net',
+        'user' => 'be7f37c4d3f0cc',
+        'password' => 'b7fd4b4e',
+        'database' => 'deslabdAbKX5ZmRh',
     ),
 );
 
