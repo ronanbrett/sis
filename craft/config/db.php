@@ -17,17 +17,11 @@ return array(
         'password' => 'Ao21Ao21',
         'database' => 'craft',
     ),
-    '.com' => array(
-        'server' => 'us-cdbr-azure-east-c.cloudapp.net',
-        'user' => 'bed79fe94a4b59',
-        'password' => 'd3f5300a',
-        'database' => 'deslabDAsrUI76VU',
-    ),
     '.net' => array(
-        'server' => 'us-cdbr-azure-east-c.cloudapp.net',
-        'user' => 'bed79fe94a4b59',
-        'password' => 'd3f5300a',
-        'database' => 'deslabDAsrUI76VU',
+        'server' => 'us-cdbr-azure-west-b.cleardb.com',
+        'user' => 'b2a3c54e2decab',
+        'password' => '62caa123',
+        'database' => 'as_c5d075f7c574d83',
     ),
 );
 
