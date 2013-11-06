@@ -9,6 +9,7 @@
 
 return array(
 	'*' => array(
+        'omitScriptNameInUrls' => true
 		
     ),
     '.dev' => array(
