@@ -12,15 +12,9 @@ return array(
     ),
     '.dev' => array(
 		'devMode' => true,
-		'environmentVariables' => array(
-            'siteUrl'        => 'http://craft.dev/'
-        )
     ),
     '.com' => array(
     ),
     '.net' => array(
-    	'environmentVariables' => array(
-            'siteUrl'        => 'http://deslabdev.azurewebsites.net/public/'
-        )
     ),
 );
