@@ -22,10 +22,6 @@ function init() {
 
     /*==========  Phone Logos  ==========*/
 
-   apps.push( new App( '.phoneLogo--desLab', '#FF3A20','fast') );
-   apps.push( new App( '.phoneLogo--idea', '#2abfff','fast' ));
-   apps.push( new App( '.phoneLogo--desComp', '#ff0052','fast' ));
-   apps.push( new App( '.phoneLogo--res', '#333','fast' ));
 }
 
 
