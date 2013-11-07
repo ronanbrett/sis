@@ -1,5 +1,6 @@
 var apps = [];
 
+
 $(document).ready(function($){
 
 init();
@@ -165,15 +166,17 @@ $('.nav__item--submenu li a').hover(function(){
 
 
 $('.menu__button').click(function(){
-  $('.sideMenu').toggleClass('open');
+  $('.sideMenu').toggleClass('open',function(){
+    $('div.content').toggleClass('visuallyhidden');
+  });
+  
 })
 
 
-$('.sideMenu > ul > li').click(function(e){
-  if($(this).has('.subMenu').length>0){
-    $(this).children('ul').toggleClass('visuallyhidden');
-    $(this).siblings().children('ul').addClass('visuallyhidden');
-  }
+$('.sideMenu ul li a.submenu').click(function(e){
+    e.preventDefault();
+    $(this).siblings('ul').toggleClass('visuallyhidden');
+    $(this).parent().siblings().children('ul').addClass('visuallyhidden');
 })
 
 

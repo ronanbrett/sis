@@ -74,15 +74,25 @@
 
         <div class="sideMenu">
             <ul class="nav nav--stacked">
-                <li class="border-ends--thin"><a href="#">Design Computing</a>
-                    <ul class="nav nav--stacked visuallyhidden subMenu">
+                <li class="border-ends--thin"><a href="#" class="submenu">Design Computing</a>
+                    <ul class="nav nav--stacked visuallyhidden ">
                         <li><a href="{{url('design-computing')}}">News</a></li>
                         <li><a href="{{url('design-computing/projects')}}">Projects</a></li>
                         <li><a href="{{url('design-computing/people')}}">People</a></li>
+                        <li><a href="{{url('design-computing/people')}}" class="submenu">Interaction Design</a>
+                            <ul class="nav nav--stacked visuallyhidden "> 
+                                <li><a href="{{url('interaction-design')}}">News</a></li>
+                                <li><a href="{{url('interaction-design/blog')}}">Blog</a></li>
+                                <li><a href="{{url('interaction-design/projects')}}">Projects</a></li>
+                                <li><a href="{{url('interaction-design/assignments')}}">Assignments</a></li>
+                                <li><a href="{{url('interaction-design/schedule/schedule-2012')}}">Schdule</a></li>
+                                <li><a href="{{url('interaction-design/people')}}">People</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-                <li class="border-ends--thin"><a href="#">IDEA</a>
-                <ul class="nav nav--stacked visuallyhidden subMenu">
+                <li class="border-ends--thin"><a href="#" class="submenu">IDEA</a>
+                <ul class="nav nav--stacked visuallyhidden">
                         <li><a href="{{url('idea')}}">News</a></li>
                         <li><a href="{{url('idea/projects')}}">Projects</a></li>
                         <li><a href="{{url('idea/people')}}">People</a></li>

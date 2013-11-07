@@ -19,14 +19,16 @@
 
 {% block content %}
 {% if title == 'design-computing' %}
-	<section class="three-quarters float--left anim">
+	<section class="three-quarters palm-one-whole float--left anim">
 	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
-	   <div class="grid studentList one-whole">
-			{% for entry in craft.users.group('designComputing2012').find() %}
-	       <div class="grid__item one-third push--bottom">
-	           <a href="{{siteUrl}}user/{{entry.username}}"><div class="student" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
-	           </div></a>
-	       </div>{% endfor %}
+	   <div class="grid studentList one-whole soft-half--sides">
+			{% for entry in craft.users.group('designComputing2012').find() %}<!--
+	       --><div class="grid__item one-third palm-one-half push--bottom"><!--
+
+	    --><a href="{{siteUrl}}user/{{entry.username}}"><div class="student" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
+	           </div></a><!--
+
+	    --></div>{% endfor %}
 	       <!--
 
 	    --></div>
