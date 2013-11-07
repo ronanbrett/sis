@@ -19,6 +19,13 @@ function init() {
    apps.push( new App( '.sideLogo--idea', '#2abfff','fast' ));
    apps.push( new App( '.sideLogo--desComp', '#ff0052','fast' ));
    apps.push( new App( '.sideLogo--res', '#333','fast' ));
+
+    /*==========  Phone Logos  ==========*/
+
+   apps.push( new App( '.phoneLogo--desLab', '#FF3A20','fast') );
+   apps.push( new App( '.phoneLogo--idea', '#2abfff','fast' ));
+   apps.push( new App( '.phoneLogo--desComp', '#ff0052','fast' ));
+   apps.push( new App( '.phoneLogo--res', '#333','fast' ));
 }
 
 
@@ -160,6 +167,10 @@ $('.nav__item--submenu li a').hover(function(){
 
 })
 
+
+$('.menu__button').click(function(){
+  $('.sideMenu').toggleClass('open');
+})
 
 
 function changeLogo(x,col){
