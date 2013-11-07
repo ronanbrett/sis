@@ -167,7 +167,7 @@ $('.nav__item--submenu li a').hover(function(){
 
 $('.menu__button').click(function(){
   $('.sideMenu').toggleClass('open',function(){
-    $('div.content').toggleClass('visuallyhidden');
+    
   });
   
 })

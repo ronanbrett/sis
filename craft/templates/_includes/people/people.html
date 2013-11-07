@@ -38,8 +38,8 @@
 	{% include "_includes/island/island--desComp.html"%}
 {% endif %}
 {% if title == 'interaction-design' %}
-	<section class="three-quarters float--left anim">
-	<div class="boxLinks push-half--bottom float--left">
+	<section class="three-quarters palm-one-whole float--left anim">
+	<div class="boxLinks push-half--bottom float--left soft-half--sides">
 		<div class="nav">
 			<li class="active"><a href="#">2012</a></li>
 			<li><a href="#">2011</a></li>
@@ -47,10 +47,10 @@
 		</div>
 	</div>
 	<!--[if lte IE 7]><div class=ie7-grid><![endif]-->
-	   <div class="grid studentList one-whole">
+	   <div class="grid studentList one-whole soft-half--sides">
 			{% for entry in craft.users.group('interactionDesign').find() %}<!--
 
-	    --><div class="grid__item one-third push--bottom">
+	    --><div class="grid__item one-third palm-one-half push--bottom">
 	           <a href="{{siteUrl}}user/{{entry.username}}"><div class="student" style="background-image:url('{{entry.featuredImage[0].getUrl()}}')">
 	           </div></a>
 	       </div><!--
