@@ -166,6 +166,7 @@ $('.nav__item--submenu li a').hover(function(){
 
 
 $('.menu__button').click(function(){
+  //$('body').toggleClass('fixed');
   $('.sideMenu').toggleClass('open',function(){
     
   });
