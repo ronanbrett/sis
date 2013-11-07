@@ -74,8 +74,19 @@
 
         <div class="sideMenu">
             <ul class="nav nav--stacked">
-                <li class="border-ends--thin"><a href="#">Design Lab</a></li>
-                <li class="border-ends--thin"><a href="#">IDEA</a></li>
+                <li class="border-ends--thin"><a href="#">Design Computing</a>
+                    <ul class="nav nav--stacked visuallyhidden subMenu">
+                        <li><a href="{{url('design-computing')}}">News</a></li>
+                        <li><a href="{{url('design-computing/projects')}}">Projects</a></li>
+                        <li><a href="{{url('design-computing/people')}}">People</a></li>
+                    </ul>
+                </li>
+                <li class="border-ends--thin"><a href="#">IDEA</a>
+                <ul class="nav nav--stacked visuallyhidden subMenu">
+                        <li><a href="{{url('idea')}}">News</a></li>
+                        <li><a href="{{url('idea/projects')}}">Projects</a></li>
+                        <li><a href="{{url('idea/people')}}">People</a></li>
+                    </ul></li>
                 <li class="border-ends--thin"><a href="#">Research</a></li>
             </ul>
         </div>

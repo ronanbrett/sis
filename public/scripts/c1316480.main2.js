@@ -169,6 +169,14 @@ $('.menu__button').click(function(){
 })
 
 
+$('.sideMenu > ul > li').click(function(e){
+  if($(this).has('.subMenu').length>0){
+    $(this).children('ul').toggleClass('visuallyhidden');
+    $(this).siblings().children('ul').addClass('visuallyhidden');
+  }
+})
+
+
 function changeLogo(x,col){
   var c = '0x'+ col;
   for ( var i = 0; i < apps.length; ++i ) {
