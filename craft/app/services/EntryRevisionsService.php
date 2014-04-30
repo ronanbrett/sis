@@ -119,10 +119,18 @@ class EntryRevisionsService extends BaseApplicationComponent
 	{
 		$draftRecord = $this->_getDraftRecord($draft);
 		$draftRecord->data = $this->_getRevisionData($draft);
+		$isNewDraft = !$draft->draftId;
 
 		if ($draftRecord->save())
 		{
 			$draft->draftId = $draftRecord->id;
+
+			// Fire an 'onSaveDraft' event
+			$this->onSaveDraft(new Event($this, array(
+				'draft'      => $draft,
+				'isNewDraft' => $isNewDraft
+			)));
+
 			return true;
 		}
 		else
@@ -141,6 +149,11 @@ class EntryRevisionsService extends BaseApplicationComponent
 	{
 		if (craft()->entries->saveEntry($draft))
 		{
+			// Fire an 'onPublishDraft' event
+			$this->onPublishDraft(new Event($this, array(
+				'draft'      => $draft,
+			)));
+
 			$this->deleteDraft($draft);
 			return true;
 		}
@@ -157,7 +170,18 @@ class EntryRevisionsService extends BaseApplicationComponent
 	public function deleteDraft(EntryDraftModel $draft)
 	{
 		$draftRecord = $this->_getDraftRecord($draft);
+
+		// Fire an 'onBeforeDeleteDraft' event
+		$this->onBeforeDeleteDraft(new Event($this, array(
+			'draft'      => $draft,
+		)));
+
 		$draftRecord->delete();
+
+		// Fire an 'onAfterDeleteDraft' event
+		$this->onAfterDeleteDraft(new Event($this, array(
+			'draft'      => $draft,
+		)));
 	}
 
 	/**
@@ -236,9 +260,10 @@ class EntryRevisionsService extends BaseApplicationComponent
 	 *
 	 * @param int $entryId
 	 * @param string $localeId
+	 * @param int|null $limit
 	 * @return array
 	 */
-	public function getVersionsByEntryId($entryId, $localeId)
+	public function getVersionsByEntryId($entryId, $localeId, $limit = -1)
 	{
 		if (!$localeId)
 		{
@@ -248,6 +273,9 @@ class EntryRevisionsService extends BaseApplicationComponent
 		$versionRecords = EntryVersionRecord::model()->findAllByAttributes(array(
 			'entryId' => $entryId,
 			'locale'  => $localeId,
+		), array(
+			'limit' => $limit,
+			'order' => 'dateCreated desc'
 		));
 
 		return EntryVersionModel::populateModels($versionRecords, 'versionId');
@@ -264,10 +292,50 @@ class EntryRevisionsService extends BaseApplicationComponent
 		$versionRecord = new EntryVersionRecord();
 		$versionRecord->entryId = $entry->id;
 		$versionRecord->sectionId = $entry->sectionId;
-		$versionRecord->creatorId = craft()->userSession->getUser()->id;
+		$versionRecord->creatorId = craft()->userSession->getUser() ? craft()->userSession->getUser()->id : $entry->authorId;
 		$versionRecord->locale = $entry->locale;
 		$versionRecord->data = $this->_getRevisionData($entry);
 		return $versionRecord->save();
+	}
+
+	/**
+	 * Fires an 'onSaveDraft' event.
+	 *
+	 * @param Event $event
+	 */
+	public function onSaveDraft(Event $event)
+	{
+		$this->raiseEvent('onSaveDraft', $event);
+	}
+
+	/**
+	 * Fires an 'onPublishDraft' event.
+	 *
+	 * @param Event $event
+	 */
+	public function onPublishDraft(Event $event)
+	{
+		$this->raiseEvent('onPublishDraft', $event);
+	}
+
+	/**
+	 * Fires an 'onBeforeDeleteDraft' event.
+	 *
+	 * @param Event $event
+	 */
+	public function onBeforeDeleteDraft(Event $event)
+	{
+		$this->raiseEvent('onBeforeDeleteDraft', $event);
+	}
+
+	/**
+	 * Fires an 'onAfterDeleteDraft' event.
+	 *
+	 * @param Event $event
+	 */
+	public function onAfterDeleteDraft(Event $event)
+	{
+		$this->raiseEvent('onAfterDeleteDraft', $event);
 	}
 
 	/**
@@ -276,7 +344,7 @@ class EntryRevisionsService extends BaseApplicationComponent
 	 * @param EntryDraftModel|EntryVersionModel $revision
 	 * @return array
 	 */
-	public function _getRevisionData($revision)
+	private function _getRevisionData($revision)
 	{
 		$revisionData = array(
 			'authorId'   => $revision->authorId,
@@ -288,7 +356,7 @@ class EntryRevisionsService extends BaseApplicationComponent
 			'fields'     => array(),
 		);
 
-		$content = $revision->getRawContent()->getAttributes(null, true);
+		$content = $revision->getContent()->getAttributes(null, true);
 
 		foreach (craft()->fields->getAllFields() as $field)
 		{

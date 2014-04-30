@@ -12,9 +12,9 @@
 
 {% block content %}
 	<div class="ui__bar push--bottom"></div>
-        <div class="project three-quarters palm-one-whole lap-one-whole float--left palm-soft--sides lap-soft--sides">
+        <div class="project three-quarters palm-one-whole lap-one-whole float--left ">
             <img src="{{entry.featuredImage[0].getUrl('frontPageTransform')}}" alt="">
-            <h1>{{ entry. title }}</h1>
+            <h1 class="palm-soft-half--sides lap-soft-half--sides">{{ entry. title }}</h1>
             <ul class="nav one-whole">
                 <li class="active"><a href="#">Grounding</a></li>
                 <li><a href="#">Sketching</a></li>
@@ -25,22 +25,22 @@
                 <li><a href="#">Video</a></li>
                 <li><a href="#">Documentation</a></li>
             </ul>
-            <div class="project__section Grounding active" data-attr="">
+            <div class="project__section Grounding active palm-soft-half--sides lap-soft-half--sides" data-attr="">
                 <p>{{entry.grounding}}</p>
             </div>
-            <div class="project__section Sketching" data-attr="">
+            <div class="project__section Sketching palm-soft-half--sides lap-soft-half--sides" data-attr="">
                 <p>{{ entry.sketching }}</p>
             </div>
-            <div class="project__section Mockups" data-attr="">
+            <div class="project__section Mockups palm-soft-half--sides lap-soft-half--sides" data-attr="">
                 <p>{{ entry.mockups }}</p>
             </div>
-            <div class="project__section Evaluation" data-attr="">
+            <div class="project__section Evaluation palm-soft-half--sides lap-soft-half--sides" data-attr="">
                 <p>{{ entry.evaluation }}</p>
             </div>
-            <div class="project__section Prototypes" data-attr="">
+            <div class="project__section Prototypes palm-soft-half--sides lap-soft-half--sides" data-attr="">
             	<p>{{entry.prototypes}}</p>
             </div>
-            <div class="project__section Presentation" data-attr="">
+            <div class="project__section Presentation palm-soft-half--sides lap-soft-half--sides" data-attr="">
             	<p>{{entry.presentation}}</p>
             </div>
             <div class="project__section Video" data-attr=""></div>

@@ -40,6 +40,24 @@ function mergeConfigs(&$baseConfig, $customConfig)
 	}
 }
 
+/**
+ * Returns the correct connection string depending on whether a unixSocket is specific or not in the db config.
+ *
+ * @param $dbConfig
+ * @return string
+ */
+function processConnectionString($dbConfig)
+{
+	if (!empty($dbConfig['unixSocket']))
+	{
+		return strtolower('mysql:unix_socket='.$dbConfig['unixSocket'].';dbname=').$dbConfig['database'].';';
+	}
+	else
+	{
+		return strtolower('mysql:host='.$dbConfig['server'].';dbname=').$dbConfig['database'].strtolower(';port='.$dbConfig['port'].';');
+	}
+}
+
 // Does craft/config/general.php exist? (It used to be called blocks.php so maybe not.)
 if (file_exists(CRAFT_CONFIG_PATH.'general.php'))
 {
@@ -134,11 +152,13 @@ $configArray = array(
 		'app.controllers.UpdateController',
 		'app.controllers.UserSettingsController',
 		'app.controllers.UsersController',
+		'app.controllers.UtilsController',
 		'app.elementtypes.AssetElementType',
 		'app.elementtypes.BaseElementType',
 		'app.elementtypes.EntryElementType',
 		'app.elementtypes.GlobalSetElementType',
 		'app.elementtypes.IElementType',
+		'app.elementtypes.MatrixBlockElementType',
 		'app.elementtypes.TagElementType',
 		'app.elementtypes.UserElementType',
 		'app.enums.AttributeType',
@@ -214,10 +234,16 @@ $configArray = array(
 		'app.etc.templating.twigextensions.CraftTwigExtension',
 		'app.etc.templating.twigextensions.Exit_Node',
 		'app.etc.templating.twigextensions.Exit_TokenParser',
+		'app.etc.templating.twigextensions.Header_Node',
+		'app.etc.templating.twigextensions.Header_TokenParser',
+		'app.etc.templating.twigextensions.Hook_Node',
+		'app.etc.templating.twigextensions.Hook_TokenParser',
 		'app.etc.templating.twigextensions.IncludeResource_Node',
 		'app.etc.templating.twigextensions.IncludeResource_TokenParser',
 		'app.etc.templating.twigextensions.IncludeTranslations_Node',
 		'app.etc.templating.twigextensions.IncludeTranslations_TokenParser',
+		'app.etc.templating.twigextensions.Namespace_Node',
+		'app.etc.templating.twigextensions.Namespace_TokenParser',
 		'app.etc.templating.twigextensions.NavItem_Node',
 		'app.etc.templating.twigextensions.Nav_Node',
 		'app.etc.templating.twigextensions.Nav_TokenParser',
@@ -231,6 +257,8 @@ $configArray = array(
 		'app.etc.templating.twigextensions.RequirePackage_TokenParser',
 		'app.etc.templating.twigextensions.RequirePermission_Node',
 		'app.etc.templating.twigextensions.RequirePermission_TokenParser',
+		'app.etc.templating.twigextensions.Switch_Node',
+		'app.etc.templating.twigextensions.Switch_TokenParser',
 		'app.etc.templating.twigextensions.TemplateLoader',
 		'app.etc.updates.Updater',
 		'app.etc.users.UserIdentity',
@@ -246,13 +274,14 @@ $configArray = array(
 		'app.fieldtypes.DropdownFieldType',
 		'app.fieldtypes.EntriesFieldType',
 		'app.fieldtypes.IFieldType',
+		'app.fieldtypes.LightswitchFieldType',
+		'app.fieldtypes.MatrixFieldType',
 		'app.fieldtypes.MultiOptionsFieldData',
 		'app.fieldtypes.MultiSelectFieldType',
 		'app.fieldtypes.NumberFieldType',
 		'app.fieldtypes.OptionData',
 		'app.fieldtypes.PlainTextFieldType',
 		'app.fieldtypes.RadioButtonsFieldType',
-		'app.fieldtypes.RelationFieldData',
 		'app.fieldtypes.RichTextData',
 		'app.fieldtypes.RichTextFieldType',
 		'app.fieldtypes.SingleOptionFieldData',
@@ -266,6 +295,7 @@ $configArray = array(
 		'app.helpers.DateTimeHelper',
 		'app.helpers.DbHelper',
 		'app.helpers.ErrorHelper',
+		'app.helpers.HeaderHelper',
 		'app.helpers.HtmlHelper',
 		'app.helpers.IOHelper',
 		'app.helpers.ImageHelper',
@@ -293,6 +323,7 @@ $configArray = array(
 		'app.models.AssetTransformModel',
 		'app.models.BaseComponentModel',
 		'app.models.BaseElementModel',
+		'app.models.BaseEntryRevisionModel',
 		'app.models.BaseModel',
 		'app.models.ContentModel',
 		'app.models.ElementCriteriaModel',
@@ -313,6 +344,10 @@ $configArray = array(
 		'app.models.GlobalSetModel',
 		'app.models.InfoModel',
 		'app.models.LocaleModel',
+		'app.models.LogEntryModel',
+		'app.models.MatrixBlockModel',
+		'app.models.MatrixBlockTypeModel',
+		'app.models.MatrixSettingsModel',
 		'app.models.Model',
 		'app.models.PackagePurchaseOrderModel',
 		'app.models.PasswordModel',
@@ -351,6 +386,8 @@ $configArray = array(
 		'app.records.FieldRecord',
 		'app.records.GlobalSetRecord',
 		'app.records.LocaleRecord',
+		'app.records.MatrixBlockRecord',
+		'app.records.MatrixBlockTypeRecord',
 		'app.records.MigrationRecord',
 		'app.records.PluginRecord',
 		'app.records.RouteRecord',
@@ -390,6 +427,7 @@ $configArray = array(
 		'app.services.ImagesService',
 		'app.services.InstallService',
 		'app.services.LocalizationService',
+		'app.services.MatrixService',
 		'app.services.MigrationsService',
 		'app.services.PathService',
 		'app.services.PluginsService',
@@ -481,7 +519,7 @@ $configArray = array(
 	'components' => array(
 
 		'db' => array(
-			'connectionString'  => strtolower('mysql:host='.$dbConfig['server'].';dbname=').$dbConfig['database'].strtolower(';port='.$dbConfig['port'].';'),
+			'connectionString'  => processConnectionString($dbConfig),
 			'emulatePrepare'    => true,
 			'username'          => $dbConfig['user'],
 			'password'          => $dbConfig['password'],
@@ -518,10 +556,11 @@ $configArray = array(
 $cpRoutes['dashboard/settings/new']               = 'dashboard/settings/_widgetsettings';
 $cpRoutes['dashboard/settings/(?P<widgetId>\d+)'] = 'dashboard/settings/_widgetsettings';
 
+$cpRoutes['entries/(?P<sectionHandle>{handle})']                  = 'entries';
 $cpRoutes['entries/(?P<sectionHandle>{handle})/new']              = array('action' => 'entries/editEntry');
 $cpRoutes['entries/(?P<sectionHandle>{handle})/(?P<entryId>\d+)'] = array('action' => 'entries/editEntry');
 
-$cpRoutes['globals/(?P<globalSetHandle>{handle})'] = 'globals';
+$cpRoutes['globals/(?P<globalSetHandle>{handle})']                = array('action' => 'globals/editContent');
 
 $cpRoutes['updates/go/(?P<handle>[^/]*)'] = 'updates/_go';
 
@@ -548,6 +587,9 @@ $cpRoutes['settings/sections/(?P<sectionId>\d+)/entrytypes/(?P<entryTypeId>\d+)'
 $cpRoutes['settings/tags']                                                        = array('action' => 'tags/index');
 $cpRoutes['settings/tags/new']                                                    = array('action' => 'tags/editTagSet');
 $cpRoutes['settings/tags/(?P<tagSetId>\d+)']                                      = array('action' => 'tags/editTagSet');
+
+$cpRoutes['utils/phpinfo']                                                        = array('action' => 'utils/getPHPInfo');
+$cpRoutes['utils/logviewer(/(?P<currentLogFileName>[A-Za-z0-9\.]+))?']             = array('action' => 'utils/getLogs');
 
 $cpRoutes['settings/packages'] = array(
 	'params' => array(
@@ -578,7 +620,7 @@ $cpRoutes['myaccount'] = 'users/_edit/account';
 // Lanugage package routes
 $cpRoutes['pkgRoutes']['Localize']['entries/(?P<sectionHandle>{handle})/(?P<entryId>\d+)/(?P<localeId>\w+)'] = array('action' => 'entries/editEntry');
 $cpRoutes['pkgRoutes']['Localize']['entries/(?P<sectionHandle>{handle})/new/(?P<localeId>\w+)']              = array('action' => 'entries/editEntry');
-$cpRoutes['pkgRoutes']['Localize']['globals/(?P<localeId>\w+)/(?P<globalSetHandle>{handle})']                = 'globals';
+$cpRoutes['pkgRoutes']['Localize']['globals/(?P<localeId>\w+)/(?P<globalSetHandle>{handle})']                = array('action' => 'globals/editContent');
 
 // Publish Pro package routes
 $cpRoutes['pkgRoutes']['PublishPro']['entries/(?P<sectionHandle>{handle})/(?P<entryId>\d+)/drafts/(?P<draftId>\d+)']     = array('action' => 'entries/editEntry');
@@ -620,6 +662,7 @@ $components['fieldTypes']['class']           = 'Craft\FieldTypesService';
 $components['globals']['class']              = 'Craft\GlobalsService';
 $components['install']['class']              = 'Craft\InstallService';
 $components['images']['class']               = 'Craft\ImagesService';
+$components['matrix']['class']               = 'Craft\MatrixService';
 $components['migrations']['class']           = 'Craft\MigrationsService';
 $components['path']['class']                 = 'Craft\PathService';
 $components['relations']['class']            = 'Craft\RelationsService';

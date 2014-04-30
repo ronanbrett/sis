@@ -163,6 +163,9 @@ var CP = Garnish.Base.extend({
 				{
 					ev.preventDefault();
 
+					// Give other stuff on the page a chance to prepare
+					this.trigger('beforeSaveShortcut');
+
 					if ($primaryForm.data('saveshortcut-redirect'))
 					{
 						$('<input type="hidden" name="redirect" value="'+$primaryForm.data('saveshortcut-redirect')+'"/>').appendTo($primaryForm);
@@ -349,7 +352,7 @@ var CP = Garnish.Base.extend({
 								$list = $elem.children();
 
 							this.$altSidebarNavBtn = $('<div class="btn menubtn">'+selectedText+'</div>').appendTo(this.$altSidebar);
-							this.$altSidebarNavMenu = $('<div class="menu menulist"/>').appendTo(this.$altSidebar);
+							this.$altSidebarNavMenu = $('<div class="menu padded"/>').appendTo(this.$altSidebar);
 
 							$list.appendTo(this.$altSidebarNavMenu);
 							new Garnish.MenuBtn(this.$altSidebarNavBtn);
